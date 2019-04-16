@@ -1,22 +1,41 @@
 package edu.projeto;
 
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Out;
+import edu.princeton.cs.algs4.SeparateChainingHashST;
+
 public class Localizacao {
 
-  public Localizacao(double latitude, double longitude, Empresa empresa) {
-    this.latitude = latitude;
-    this.longitude = longitude;
-    this.empresa = empresa;
-  }
+  private Integer idLocalizacao;
 
   private double latitude;
 
   private double longitude;
 
-    private Empresa empresa;
-      
-  public double distancia(Localizacao l) {
-  return 0.0;
+
+  /**
+   *
+   * Construtor
+   */
+  public Localizacao(Integer idLocalizacao, double latitude, double longitude) {
+    this.idLocalizacao = idLocalizacao;
+    this.latitude = latitude;
+    this.longitude = longitude;
+  }
+
+
+  /**
+   *
+   * Getter and Setter
+   */
+
+  public Integer getIdLocalizacao() {
+    return idLocalizacao;
+  }
+
+  public void setIdLocalizacao(Integer idLocalizacao) {
+    this.idLocalizacao = idLocalizacao;
   }
 
   public double getLatitude() {
@@ -35,11 +54,37 @@ public class Localizacao {
     this.longitude = longitude;
   }
 
-  public Empresa getEmpresa() {
-    return empresa;
+  public String toStringFicheiroLocalizacao(){
+    return idLocalizacao + ";" + latitude + ";" + longitude + ";";
   }
 
-  public void setEmpresa(Empresa empresa) {
-    this.empresa = empresa;
+
+  public static String guardarlocalizacao(SeparateChainingHashST<Integer,Localizacao> localizacaoST, String path){
+
+    Out o = new Out(path);
+    for(Integer idaux : localizacaoST.keys()){
+      Localizacao loc = (Localizacao) localizacaoST.get(idaux);
+      o.println(loc.toStringFicheiroLocalizacao());
+    }
+    return "Guardou as Pessoa no TXT!";
+  }
+
+  public static void carregarPessoa(SeparateChainingHashST<Integer,Localizacao> localizacaoST, String path) {
+    In in = new In(path);
+    while (!in.isEmpty()){
+      String[] split = in.readLine().split(";");
+      Integer idLocalizacao = Integer.parseInt(split[0]);
+      Double latitude = Double.parseDouble(split[1]);
+      Double longitude = Double.parseDouble(split[2]);
+
+      Localizacao loc = new Localizacao(idLocalizacao, latitude, longitude);
+      localizacaoST.put(idLocalizacao, loc);
+
+    }
+
+  }
+
+  public double distancia(Localizacao l) {
+    return 0.0;
   }
 }

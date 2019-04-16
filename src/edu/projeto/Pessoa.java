@@ -1,12 +1,17 @@
 package edu.projeto;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Pessoa {
+
+    private Integer idPessoa;
 
   private String nomePessoa;
 
@@ -14,29 +19,153 @@ public class Pessoa {
 
   private Date dataNasc;
 
-  private Integer idPessoa;
+  private Integer idEmpresa;
 
-  private Empresa empresa;
-    private RedBlackBST<Integer,Encontro> encontrosST = new RedBlackBST<>();
-    private SeparateChainingHashST<Integer,Competencia> competencias = new SeparateChainingHashST();
-    private SeparateChainingHashST<Integer,Area> areas = new SeparateChainingHashST();
-     private RedBlackBST<Integer,Historico> empregosST = new RedBlackBST<>();
+  private RedBlackBST<Integer,Encontro> encontrosST = new RedBlackBST<>();
 
-    private Localizacao localizacao;
+  private SeparateChainingHashST<Integer,Competencia> competenciasST = new SeparateChainingHashST();
 
-  public Pessoa(String nomePessoa, String apelidoPessoa, Date dataNasc, Integer idPessoa, Empresa empresa, RedBlackBST<Integer, Encontro> encontrosST, SeparateChainingHashST<Integer, Competencia> competencias, SeparateChainingHashST<Integer, Area> areas, RedBlackBST<Integer, Historico> empregosST, Localizacao localizacao) {
-    this.nomePessoa = nomePessoa;
-    this.apelidoPessoa = apelidoPessoa;
-    this.dataNasc = dataNasc;
-    this.idPessoa = idPessoa;
-    this.empresa = empresa;
-    this.encontrosST = encontrosST;
-    this.competencias = competencias;
-    this.areas = areas;
-    this.empregosST = empregosST;
-    this.localizacao = localizacao;
+  private SeparateChainingHashST<Integer,Area> areasST = new SeparateChainingHashST();
+
+  private RedBlackBST<Integer,Historico> empregosST = new RedBlackBST<>();
+
+  private Integer idLocalizacao;
+
+
+    /**
+     *s
+     * Construtor
+     */
+  public Pessoa(Integer idPessoa, String nomePessoa, String apelidoPessoa, Date dataNasc, Integer idEmpresa, Integer idLocalizacao) {
+      this.idPessoa = idPessoa;
+      this.nomePessoa = nomePessoa;
+      this.apelidoPessoa = apelidoPessoa;
+      this.dataNasc = dataNasc;
+      this.idEmpresa = idEmpresa;
+      this.idLocalizacao = idLocalizacao;
   }
 
+    /**
+     *
+     * Getter and Setter
+     */
+    public String getNomePessoa() {
+        return nomePessoa;
+    }
+
+    public void setNomePessoa(String nomePessoa) {
+        this.nomePessoa = nomePessoa;
+    }
+
+    public String getApelidoPessoa() {
+        return apelidoPessoa;
+    }
+
+    public void setApelidoPessoa(String apelidoPessoa) {
+        this.apelidoPessoa = apelidoPessoa;
+    }
+
+    public Date getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
+    }
+
+    public Integer getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(Integer idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    /**
+     *
+     * @element-type Encontro
+     */
+    public RedBlackBST<Integer, Encontro> getEncontrosST() {
+        return encontrosST;
+    }
+
+    public void setEncontrosST(RedBlackBST<Integer, Encontro> encontrosST) {
+        this.encontrosST = encontrosST;
+    }
+
+    /**
+     *
+     * @element-type Competencia
+     */
+    public SeparateChainingHashST<Integer, Competencia> getCompetenciasST() {
+        return competenciasST;
+    }
+
+    public void setCompetencias(SeparateChainingHashST<Integer, Competencia> competenciasST) {
+        this.competenciasST = competenciasST;
+    }
+
+    /**
+     *
+     * @element-type Area
+     */
+    public SeparateChainingHashST<Integer, Area> getAreasST() {
+        return areasST;
+    }
+
+    public void setAreas(SeparateChainingHashST<Integer, Area> areasST) {
+        this.areasST = areasST;
+    }
+
+    /**
+     *
+     * @element-type Historico
+     */
+    public RedBlackBST<Integer, Historico> getEmpregosST() {
+        return empregosST;
+    }
+
+    public void setEmpregosST(RedBlackBST<Integer, Historico> empregosST) {
+        this.empregosST = empregosST;
+    }
+
+    public Integer getIdLocalizacao() {
+        return idLocalizacao;
+    }
+
+    public void setIdLocalizacao(Integer idLocalizacao) {
+        this.idLocalizacao = idLocalizacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "idPessoa=" + idPessoa +
+                ", nomePessoa='" + nomePessoa + '\'' +
+                ", apelidoPessoa='" + apelidoPessoa + '\'' +
+                ", dataNasc=" + dataNasc +
+                ", IdEmpresa=" + idEmpresa +
+                ", encontrosST=" + encontrosST +
+                ", competenciasST=" + competenciasST +
+                ", areasST=" + areasST +
+                ", empregosST=" + empregosST +
+                ", idLocalizacao=" + idLocalizacao +
+                '}';
+    }
+
+
+    /**
+     *
+     * Funções
+     */
   public static void addCompetencia(SeparateChainingHashST<Integer,Competencia>competencias, Integer idCompetencia,  String nomeCompetencia) {
       Competencia aux_competencia = new Competencia(idCompetencia, nomeCompetencia);
       competencias.put(idCompetencia, aux_competencia);
@@ -127,102 +256,51 @@ public class Pessoa {
     }
 
 
-  public void listarArea() {
+    /**
+     *
+     * Falta acabar
+     */
+  public static ArrayList<String> pesquisarAreaPessoa(SeparateChainingHashST<Integer,Area> areasST, int idPessoa) {
+      ArrayList<String> res = new ArrayList<>();
+      for(Integer aux : areasST.keys()){
+          Area a = areasST.get(aux);
+          //if(a.)
+      }
+      return res;
   }
 
-  public String getNomePessoa() {
-    return nomePessoa;
-  }
 
-  public void setNomePessoa(String nomePessoa) {
-    this.nomePessoa = nomePessoa;
-  }
+    public String toStringFicheiroPessoa(){
+        return idPessoa + ";" + nomePessoa + ";" + apelidoPessoa + ";" + dataNasc + ";" + idEmpresa + ";" +  idLocalizacao + ";";
+    }
 
-  public String getApelidoPessoa() {
-    return apelidoPessoa;
-  }
 
-  public void setApelidoPessoa(String apelidoPessoa) {
-    this.apelidoPessoa = apelidoPessoa;
-  }
+    public static String guardarPessoa(RedBlackBST<Integer,Pessoa> pessoasST, String path){
 
-  public Date getDataNasc() {
-    return dataNasc;
-  }
+        Out o = new Out(path);
+        for(Integer idaux : pessoasST.keys()){
+            Pessoa p = (Pessoa) pessoasST.get(idaux);
+            o.println(p.toStringFicheiroPessoa());
+        }
+        return "Guardou as Pessoa no TXT!";
+    }
 
-  public void setDataNasc(Date dataNasc) {
-    this.dataNasc = dataNasc;
-  }
+    public static void carregarPessoa(RedBlackBST<Integer,Pessoa> pessoasST, String path) {
+        In in = new In(path);
+        while (!in.isEmpty()){
+            String[] split = in.readLine().split(";");
+            Integer idPessoa = Integer.parseInt(split[0]);
+            String nomePessoa = split[1];
+            String apelidoPessoa = split[2];
+            String dataNasc = split[3];
+            Integer idEmpresa = Integer.parseInt(split[4]);
+            Integer idLocalizacao = Integer.parseInt(split[5]);
 
-  public Integer getIdPessoa() {
-    return idPessoa;
-  }
+            Pessoa p = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, new Date(dataNasc), idEmpresa, idLocalizacao);
+            pessoasST.put(idPessoa, p);
 
-  public void setIdPessoa(Integer idPessoa) {
-    this.idPessoa = idPessoa;
-  }
+        }
 
-  public Empresa getEmpresa() {
-    return empresa;
-  }
+    }
 
-  public void setEmpresa(Empresa empresa) {
-    this.empresa = empresa;
-  }
-
-  /**
- *
- * @element-type Encontro
- */
-  public RedBlackBST<Integer, Encontro> getEncontrosST() {
-    return encontrosST;
-  }
-
-  public void setEncontrosST(RedBlackBST<Integer, Encontro> encontrosST) {
-    this.encontrosST = encontrosST;
-  }
-
-  /**
- *
- * @element-type Competencia
- */
-  public SeparateChainingHashST<Integer, Competencia> getCompetencias() {
-    return competencias;
-  }
-
-  public void setCompetencias(SeparateChainingHashST<Integer, Competencia> competencias) {
-    this.competencias = competencias;
-  }
-
-  /**
- *
- * @element-type Area
- */
-  public SeparateChainingHashST<Integer, Area> getAreas() {
-    return areas;
-  }
-
-  public void setAreas(SeparateChainingHashST<Integer, Area> areas) {
-    this.areas = areas;
-  }
-
-  /**
-*
-* @element-type Historico
-*/
-  public RedBlackBST<Integer, Historico> getEmpregosST() {
-    return empregosST;
-  }
-
-  public void setEmpregosST(RedBlackBST<Integer, Historico> empregosST) {
-    this.empregosST = empregosST;
-  }
-
-  public Localizacao getLocalizacao() {
-    return localizacao;
-  }
-
-  public void setLocalizacao(Localizacao localizacao) {
-    this.localizacao = localizacao;
-  }
 }
