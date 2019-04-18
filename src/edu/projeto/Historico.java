@@ -1,9 +1,6 @@
 package edu.projeto;
 
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
-import edu.princeton.cs.algs4.RedBlackBST;
 
 public class Historico {
 
@@ -86,36 +83,16 @@ public class Historico {
     this.idEmpresa = idEmpresa;
   }
 
+
+  /**
+   *
+   * Funções
+   */
   public String toStringFicheiroHistorico(){
     return idHistorico + ";" + dataInicio + ";" + dataFim + ";" + cargo + ";"  + idPessoa + ";" + idEmpresa + ";";
   }
 
 
-  public static String guardarHistorico(RedBlackBST<Date,Historico> historicoST, String path){
 
-    Out o = new Out(path);
-    for(Date dateaux : historicoST.keys()){
-      Historico hi = (Historico) historicoST.get(dateaux);
-      o.println(hi.toStringFicheiroHistorico());
-    }
-    return "Guardou os encontros no TXT!";
-  }
-
-  public static void carregaHistorico(RedBlackBST<Integer,Historico> historicoST, String path) {
-    In in = new In(path);
-    while (!in.isEmpty()){
-      String[] split = in.readLine().split(";");
-      Integer idHistorico = Integer.parseInt(split[0]);
-      String dataInicio = split[1];
-      String dataFim = split[2];
-      String cargo = split[2];
-      Integer idPessoa = Integer.parseInt(split[3]);
-      Integer idEmpresa = Integer.parseInt(split[4]);
-
-      Historico hi =  new Historico(idHistorico, new Date(dataInicio), new Date(dataFim), cargo, idPessoa, idEmpresa);
-      historicoST.put(idHistorico, hi);
-
-    }
-  }
 
 }

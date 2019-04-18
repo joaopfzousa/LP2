@@ -1,8 +1,5 @@
 package edu.projeto;
 
-
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 
 
@@ -111,36 +108,14 @@ public class Encontro {
   }
 
 
-
+    /**
+     *
+     * Funções
+     */
     public String toStringFicheiroEncontro(){
         return idEncontro + ";" + dataInicio + ";" + dataFinal + ";" + idEmpresa + ";" + idLocalizacao + ";" + idArea + ";";
     }
 
 
-    public static String guardarEncontro(RedBlackBST<Integer,Encontro> encontrosST, String path){
 
-        Out o = new Out(path);
-        for(Integer idaux : encontrosST.keys()){
-            Encontro en = (Encontro) encontrosST.get(idaux);
-            o.println(en.toStringFicheiroEncontro());
-        }
-        return "Guardou os encontros no TXT!";
-    }
-
-    public static void carregaEncontro(RedBlackBST<Integer,Encontro> encontrosST, String path) {
-        In in = new In(path);
-        while (!in.isEmpty()){
-            String[] split = in.readLine().split(";");
-            Integer idEncontro = Integer.parseInt(split[0]);
-            String dataInicio = split[1];
-            String dataFinal = split[2];
-            Integer idEmpresa = Integer.parseInt(split[3]);
-            Integer idLocalizacao = Integer.parseInt(split[4]);
-            Integer idArea = Integer.parseInt(split[5]);
-
-            Encontro en =  new Encontro(idEncontro,new Date(dataInicio), new Date(dataFinal), idEmpresa, idLocalizacao, idArea);
-            encontrosST.put(idEncontro, en);
-
-        }
-    }
 }

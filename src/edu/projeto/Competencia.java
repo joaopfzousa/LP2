@@ -1,9 +1,7 @@
 package edu.projeto;
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
-import edu.princeton.cs.algs4.SeparateChainingHashST;
+
 
 
 public class Competencia {
@@ -63,31 +61,16 @@ public class Competencia {
                 ", pessoasST=" + pessoasST +
                 '}';
     }
+
+
+    /**
+     *
+     * Funções
+     */
     public String toStringFicheiroCompetencia(){
         return idCompetencia + ";" + nomeCompetencia + ";";
     }
 
 
-    public static String guardarCompetencia(SeparateChainingHashST<Integer,Competencia> competenciasST, String path){
 
-        Out o = new Out(path);
-        for(Integer idaux : competenciasST.keys()){
-            Competencia com = (Competencia) competenciasST.get(idaux);
-            o.println(com.toStringFicheiroCompetencia());
-        }
-        return "Guardou as Competencias no TXT!";
-    }
-
-    public static void carregarCompetencias(SeparateChainingHashST<Integer,Competencia> competenciasST, String path) {
-        In in = new In(path);
-        while (!in.isEmpty()){
-            String[] split = in.readLine().split(";");
-            Integer idCompetencia = Integer.parseInt(split[0]);
-            String nomeCompetencia = split[1];
-
-            Competencia com = new Competencia(idCompetencia, nomeCompetencia);
-            competenciasST.put(idCompetencia, com);
-
-        }
-    }
 }

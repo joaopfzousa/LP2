@@ -1,7 +1,5 @@
 package edu.projeto;
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
@@ -21,7 +19,7 @@ public class Pessoa {
 
   private Integer idEmpresa;
 
-  private RedBlackBST<Integer,Encontro> encontrosST = new RedBlackBST<>();
+  private RedBlackBST<Date,Encontro> encontrosST = new RedBlackBST<>();
 
   private SeparateChainingHashST<Integer,Competencia> competenciasST = new SeparateChainingHashST();
 
@@ -93,11 +91,11 @@ public class Pessoa {
      *
      * @element-type Encontro
      */
-    public RedBlackBST<Integer, Encontro> getEncontrosST() {
+    public RedBlackBST<Date, Encontro> getEncontrosST() {
         return encontrosST;
     }
 
-    public void setEncontrosST(RedBlackBST<Integer, Encontro> encontrosST) {
+    public void setEncontrosST(RedBlackBST<Date, Encontro> encontrosST) {
         this.encontrosST = encontrosST;
     }
 
@@ -153,10 +151,6 @@ public class Pessoa {
                 ", apelidoPessoa='" + apelidoPessoa + '\'' +
                 ", dataNasc=" + dataNasc +
                 ", IdEmpresa=" + idEmpresa +
-                ", encontrosST=" + encontrosST +
-                ", competenciasST=" + competenciasST +
-                ", areasST=" + areasST +
-                ", empregosST=" + empregosST +
                 ", idLocalizacao=" + idLocalizacao +
                 '}';
     }
@@ -260,11 +254,13 @@ public class Pessoa {
      *
      * Falta acabar
      */
-  public static ArrayList<String> pesquisarAreaPessoa(SeparateChainingHashST<Integer,Area> areasST, int idPessoa) {
+  public static ArrayList<String> pesquisarPessoaArea(RedBlackBST<Integer,Pessoa> pessoasST, int idPessoa) {
       ArrayList<String> res = new ArrayList<>();
-      for(Integer aux : areasST.keys()){
-          Area a = areasST.get(aux);
-          //if(a.)
+      for(Integer aux : pessoasST.keys()){
+          Pessoa p = pessoasST.get(aux);
+          if(p.getIdPessoa().equals(idPessoa)){
+              res.add(p.toString());
+          }
       }
       return res;
   }
@@ -275,32 +271,5 @@ public class Pessoa {
     }
 
 
-    public static String guardarPessoa(RedBlackBST<Integer,Pessoa> pessoasST, String path){
-
-        Out o = new Out(path);
-        for(Integer idaux : pessoasST.keys()){
-            Pessoa p = (Pessoa) pessoasST.get(idaux);
-            o.println(p.toStringFicheiroPessoa());
-        }
-        return "Guardou as Pessoa no TXT!";
-    }
-
-    public static void carregarPessoa(RedBlackBST<Integer,Pessoa> pessoasST, String path) {
-        In in = new In(path);
-        while (!in.isEmpty()){
-            String[] split = in.readLine().split(";");
-            Integer idPessoa = Integer.parseInt(split[0]);
-            String nomePessoa = split[1];
-            String apelidoPessoa = split[2];
-            String dataNasc = split[3];
-            Integer idEmpresa = Integer.parseInt(split[4]);
-            Integer idLocalizacao = Integer.parseInt(split[5]);
-
-            Pessoa p = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, new Date(dataNasc), idEmpresa, idLocalizacao);
-            pessoasST.put(idPessoa, p);
-
-        }
-
-    }
 
 }

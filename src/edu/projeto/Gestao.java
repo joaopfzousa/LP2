@@ -1,5 +1,7 @@
 package edu.projeto;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
@@ -8,15 +10,19 @@ import java.util.Scanner;
 
 public class Gestao {
 
-    private RedBlackBST<Integer,Encontro> encontrosST = new RedBlackBST<>();
+    private static RedBlackBST<Date,Encontro> encontrosST = new RedBlackBST<>();
 
-    private SeparateChainingHashST <Integer,Empresa> empresasST = new SeparateChainingHashST();
+    private static SeparateChainingHashST <Integer,Empresa> empresasST = new SeparateChainingHashST();
 
-    private RedBlackBST<Integer,Pessoa> pessoasST = new RedBlackBST<>();
+    private static RedBlackBST<Integer,Pessoa> pessoasST = new RedBlackBST<>();
 
-    private SeparateChainingHashST<Integer,Area> areasST = new SeparateChainingHashST();
+    private static SeparateChainingHashST<Integer,Area> areasST = new SeparateChainingHashST();
 
-    private SeparateChainingHashST<Integer,Competencia> competenciasST = new SeparateChainingHashST();
+    private static SeparateChainingHashST<Integer,Competencia> competenciasST = new SeparateChainingHashST();
+
+    private static RedBlackBST<Date,Historico> historicoST = new RedBlackBST<>();
+
+    private static SeparateChainingHashST<Integer,Localizacao> localizacaoST = new SeparateChainingHashST<>();
 /**
  *
  * Getter and Setter
@@ -25,11 +31,11 @@ public class Gestao {
      *
      * @element-type Encontro
      */
-    public RedBlackBST<Integer, Encontro> getEncontrosST() {
+    public RedBlackBST<Date, Encontro> getEncontrosST() {
         return encontrosST;
     }
 
-    public void setEncontrosST(RedBlackBST<Integer, Encontro> encontrosST) {
+    public void setEncontrosST(RedBlackBST<Date, Encontro> encontrosST) {
         this.encontrosST = encontrosST;
     }
 
@@ -37,11 +43,11 @@ public class Gestao {
      *
      * @element-type Empresa
      */
-    public SeparateChainingHashST<Integer, Empresa> getEmpresas() {
+    public SeparateChainingHashST<Integer, Empresa> getEmpresasST() {
         return empresasST;
     }
 
-    public void setEmpresas(SeparateChainingHashST<Integer, Empresa> empresasST) {
+    public void setEmpresasST(SeparateChainingHashST<Integer, Empresa> empresasST) {
         this.empresasST = empresasST;
     }
 
@@ -80,6 +86,26 @@ public class Gestao {
     public void setCompetenciasST(SeparateChainingHashST<Integer, Competencia> competenciasST) {
         this.competenciasST = competenciasST;
     }
+
+    public RedBlackBST<Date, Historico> getHistoricoST() {
+        return historicoST;
+    }
+
+    public void setHistoricoST(RedBlackBST<Date, Historico> historicoST) {
+        this.historicoST = historicoST;
+    }
+
+    public SeparateChainingHashST<Integer, Localizacao> getLocalizacaoST() {
+        return localizacaoST;
+    }
+
+    public void setLocalizacaoST(SeparateChainingHashST<Integer, Localizacao> localizacaoST) {
+        this.localizacaoST = localizacaoST;
+    }
+
+
+
+
     /**
      *
      * Funções
@@ -96,14 +122,26 @@ public class Gestao {
         }
     }
 
-    public static void removeEmpresa(SeparateChainingHashST <Integer,Empresa>empresasST, Integer idEmpresa) {
-
-        if (empresasST.contains(idEmpresa)) {
-            empresasST.delete(idEmpresa);
-            System.out.println("\n Empresa removido com sucesso ");
-        } else {
-            System.out.println("\n Esta empresa nao existe!!" + "\n");
+    public static String removeEmpresa(SeparateChainingHashST <Integer,Empresa>empresasST, RedBlackBST<Integer,Pessoa> pessoasST, RedBlackBST<Integer,Encontro> encontrosST,  Integer idEmpresa) {
+        for(Integer id_emaux : empresasST.keys()){
+            Empresa em = (Empresa) empresasST.get(id_emaux);
+            if(em.getIdEmpresa().equals(idEmpresa)){
+                empresasST.delete(id_emaux);
+            }
         }
+        for(Integer id_paux : pessoasST.keys()){
+            Pessoa p = (Pessoa) pessoasST.get(id_paux);
+            if(p.getIdPessoa().equals(idEmpresa)){
+                pessoasST.delete(id_paux);
+            }
+        }
+        for(Integer id_enpaux : encontrosST.keys()) {
+            Encontro en = (Encontro) encontrosST.get(id_enpaux);
+            if (en.getIdEncontro().equals(idEmpresa)) {
+                encontrosST.delete(id_enpaux);
+            }
+        }
+        return "Empresa" + idEmpresa + "apagada com sucesso";
     }
 
     public static void alterarEmpresa(SeparateChainingHashST <Integer,Empresa>empresasST, Integer idEmpresa){
@@ -172,15 +210,215 @@ public class Gestao {
   }
 
   public static void listarArea(SeparateChainingHashST<Integer,Area> areasST) {
-      for (Integer idaux : areasST.keys()) {
-          Area a = (Area) areasST.get(idaux);
-          System.out.println(a.toString());
-      }
-  }
+        for (Integer idaux : areasST.keys()) {
+            Area a = (Area) areasST.get(idaux);
+            System.out.println(a.toString());
+        }
+    }
 
-    public static void main(String[] args) {
+    public static String arquivarHistoricoEmpresa(SeparateChainingHashST <Integer,Empresa> empresasST, Integer idEmpresa, String path){
+
+        Out o = new Out(path);
+        for(Integer id_aux : empresasST.keys()){
+            Empresa em = (Empresa) empresasST.get(id_aux);
+            if(em.getIdEmpresa().equals(idEmpresa)){
+                o.println(em.toStringFicheiroEmpresa());
+            }
+        }
+        return "Guardou historico da empresa" + idEmpresa + "com Sucesso";
+    }
+
+
+    public static String guardarArea(SeparateChainingHashST<Integer,Area> areasST, String path){
+
+        Out o = new Out(path);
+        for(Integer idaux : areasST.keys()){
+            Area a = (Area) areasST.get(idaux);
+            o.println(a.toStringFicheiroArea());
+        }
+        return "Guardou as Areas no TXT!";
+    }
+
+    public static void carregarAreas(SeparateChainingHashST<Integer,Area> areasST, String path) {
+        In in = new In(path);
+        while (!in.isEmpty()){
+            String[] split = in.readLine().split(";");
+            Integer idArea = Integer.parseInt(split[0]);
+            String nomeArea = split[1];
+
+            Area a = new Area(idArea, nomeArea);
+            areasST.put(idArea, a);
+
+        }
+    }
+
+    public static String guardarCompetencia(SeparateChainingHashST<Integer,Competencia> competenciasST, String path){
+
+        Out o = new Out(path);
+        for(Integer idaux : competenciasST.keys()){
+            Competencia com = (Competencia) competenciasST.get(idaux);
+            o.println(com.toStringFicheiroCompetencia());
+        }
+        return "Guardou as Competencias no TXT!";
+    }
+
+    public static void carregarCompetencias(SeparateChainingHashST<Integer,Competencia> competenciasST, String path) {
+        In in = new In(path);
+        while (!in.isEmpty()){
+            String[] split = in.readLine().split(";");
+            Integer idCompetencia = Integer.parseInt(split[0]);
+            String nomeCompetencia = split[1];
+
+            Competencia com = new Competencia(idCompetencia, nomeCompetencia);
+            competenciasST.put(idCompetencia, com);
+
+        }
+    }
+
+    public static String guardarEmpresa(SeparateChainingHashST <Integer,Empresa> empresasST, String path){
+
+        Out o = new Out(path);
+        for(Integer idaux : empresasST.keys()){
+            Empresa em = (Empresa) empresasST.get(idaux);
+            o.println(em.toStringFicheiroEmpresa());
+        }
+        return "Guardou as Empresas no TXT!";
+    }
+
+    public static void carregarEmpresas(SeparateChainingHashST <Integer,Empresa> empresasST, String path) {
+        In in = new In(path);
+        while (!in.isEmpty()){
+            String[] split = in.readLine().split(";");
+            Integer idEmpresa = Integer.parseInt(split[0]);
+            String nomeEmpresa = split[1];
+            String areaEmpresa = split[2];
+            Integer idLocalizacao = Integer.parseInt(split[3]);
+
+            Empresa em =  new Empresa(idEmpresa, nomeEmpresa, areaEmpresa, idLocalizacao);
+            empresasST.put(idEmpresa, em);
+
+        }
+    }
+
+    public static String guardarEncontro(RedBlackBST<Date,Encontro> encontrosST, String path){
+
+        Out o = new Out(path);
+        for(Date aux : encontrosST.keys()){
+            Encontro en = (Encontro) encontrosST.get(aux);
+            o.println(en.toStringFicheiroEncontro());
+        }
+        return "Guardou os encontros no TXT!";
+    }
+
+    public static void carregaEncontro(RedBlackBST<Date,Encontro> encontrosST, String path) {
+        In in = new In(path);
+        while (!in.isEmpty()){
+            String[] split = in.readLine().split(";");
+            Integer idEncontro = Integer.parseInt(split[0]);
+            String dataInicio = split[1];
+            String dataFinal = split[2];
+            Integer idEmpresa = Integer.parseInt(split[3]);
+            Integer idLocalizacao = Integer.parseInt(split[4]);
+            Integer idArea = Integer.parseInt(split[5]);
+
+            Encontro en =  new Encontro(idEncontro,new Date(dataInicio), new Date(dataFinal), idEmpresa, idLocalizacao, idArea);
+            encontrosST.put(en.getDataInicio(), en);
+
+        }
+    }
+
+    public static String guardarHistorico(RedBlackBST<Date,Historico> historicoST, String path){
+
+        Out o = new Out(path);
+        for(Date dateaux : historicoST.keys()){
+            Historico hi = (Historico) historicoST.get(dateaux);
+            o.println(hi.toStringFicheiroHistorico());
+        }
+        return "Guardou os encontros no TXT!";
+    }
+
+    public static void carregaHistorico(RedBlackBST<Date, Historico> historicoST, String path) {
+        In in = new In(path);
+        while (!in.isEmpty()){
+            String[] split = in.readLine().split(";");
+            Integer idHistorico = Integer.parseInt(split[0]);
+            String dataInicio = split[1];
+            String dataFim = split[2];
+            String cargo = split[2];
+            Integer idPessoa = Integer.parseInt(split[3]);
+            Integer idEmpresa = Integer.parseInt(split[4]);
+
+            Historico hi =  new Historico(idHistorico, new Date(dataInicio), new Date(dataFim), cargo, idPessoa, idEmpresa);
+            historicoST.put(hi.getDataInicio(), hi);
+
+        }
+    }
+
+
+    public static String guardarlocalizacao(SeparateChainingHashST<Integer,Localizacao> localizacaoST, String path){
+
+        Out o = new Out(path);
+        for(Integer idaux : localizacaoST.keys()){
+            Localizacao loc = (Localizacao) localizacaoST.get(idaux);
+            o.println(loc.toStringFicheiroLocalizacao());
+        }
+        return "Guardou as Pessoa no TXT!";
+    }
+
+    public static void carregarLocalizacao(SeparateChainingHashST<Integer,Localizacao> localizacaoST, String path) {
+        In in = new In(path);
+        while (!in.isEmpty()){
+            String[] split = in.readLine().split(";");
+            Integer idLocalizacao = Integer.parseInt(split[0]);
+            Double latitude = Double.parseDouble(split[1]);
+            Double longitude = Double.parseDouble(split[2]);
+
+            Localizacao loc = new Localizacao(idLocalizacao, latitude, longitude);
+            localizacaoST.put(idLocalizacao, loc);
+
+        }
 
     }
 
+
+    public static String guardarPessoa(RedBlackBST<Integer,Pessoa> pessoasST, String path){
+
+        Out o = new Out(path);
+        for(Integer idaux : pessoasST.keys()){
+            Pessoa p = (Pessoa) pessoasST.get(idaux);
+            o.println(p.toStringFicheiroPessoa());
+        }
+        return "Guardou as Pessoa no TXT!";
+    }
+
+    public static void carregarPessoa(RedBlackBST<Integer,Pessoa> pessoasST, String path) {
+        In in = new In(path);
+        while (!in.isEmpty()){
+            String[] split = in.readLine().split(";");
+            Integer idPessoa = Integer.parseInt(split[0]);
+            String nomePessoa = split[1];
+            String apelidoPessoa = split[2];
+            String dataNasc = split[3];
+            Integer idEmpresa = Integer.parseInt(split[4]);
+            Integer idLocalizacao = Integer.parseInt(split[5]);
+
+            Pessoa p = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, new Date(dataNasc), idEmpresa, idLocalizacao);
+            pessoasST.put(idPessoa, p);
+
+        }
+
+    }
+
+    public static String arquivarHistoricoPessoa(RedBlackBST<Integer,Pessoa> pessoasST, Integer idPessoa, String path){
+
+        Out o = new Out(path);
+        for(Integer id_paux : pessoasST.keys()){
+            Pessoa p = (Pessoa) pessoasST.get(id_paux);
+            if(p.getIdPessoa().equals(idPessoa)){
+                o.println(p.toStringFicheiroPessoa());
+            }
+        }
+        return "Guardou historico da pessoa" + idPessoa + "com Sucesso";
+    }
 
 }

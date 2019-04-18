@@ -1,11 +1,6 @@
 package edu.projeto;
 
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Out;
-import edu.princeton.cs.algs4.RedBlackBST;
-import edu.princeton.cs.algs4.SeparateChainingHashST;
-
 public class Area {
 
   private Integer idArea;
@@ -48,31 +43,14 @@ public class Area {
                 ", nomeArea='" + nomeArea + '\'' +
                 '}';
     }
+
+    /**
+     *
+     * Funções
+     */
     public String toStringFicheiroArea(){
         return idArea + ";" + nomeArea + ";";
     }
 
 
-    public static String guardarArea(SeparateChainingHashST<Integer,Area> areasST, String path){
-
-        Out o = new Out(path);
-        for(Integer idaux : areasST.keys()){
-            Area a = (Area) areasST.get(idaux);
-            o.println(a.toStringFicheiroArea());
-        }
-        return "Guardou as Areas no TXT!";
-    }
-
-    public static void carregarAreas(SeparateChainingHashST<Integer,Area> areasST, String path) {
-        In in = new In(path);
-        while (!in.isEmpty()){
-            String[] split = in.readLine().split(";");
-            Integer idArea = Integer.parseInt(split[0]);
-            String nomeArea = split[1];
-
-            Area a = new Area(idArea, nomeArea);
-            areasST.put(idArea, a);
-
-        }
-    }
 }
