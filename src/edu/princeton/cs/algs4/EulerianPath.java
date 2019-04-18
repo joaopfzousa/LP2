@@ -218,8 +218,8 @@ public class EulerianPath {
 
 
     private static void unitTest(Graph G, String description) {
-        StdOut.println(description);
-        StdOut.println("-------------------------------------");
+        System.out.println(description);
+        System.out.println("-------------------------------------");
         StdOut.print(G);
 
         EulerianPath euler = new EulerianPath(G);
@@ -229,12 +229,12 @@ public class EulerianPath {
             for (int v : euler.path()) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
         else {
-            StdOut.println("none");
+            System.out.println("none");
         }
-        StdOut.println();
+        System.out.println();
     }
 
 

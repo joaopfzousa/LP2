@@ -198,10 +198,10 @@ public class SuffixArray {
         String s = StdIn.readAll().replaceAll("\\s+", " ").trim();
         SuffixArray suffix = new SuffixArray(s);
 
-        // StdOut.println("rank(" + args[0] + ") = " + suffix.rank(args[0]));
+        // System.out.println("rank(" + args[0] + ") = " + suffix.rank(args[0]));
 
-        StdOut.println("  i ind lcp rnk select");
-        StdOut.println("---------------------------");
+        System.out.println("  i ind lcp rnk select");
+        System.out.println("---------------------------");
 
         for (int i = 0; i < s.length(); i++) {
             int index = suffix.index(i);

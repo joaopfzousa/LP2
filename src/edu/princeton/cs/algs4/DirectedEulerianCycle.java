@@ -176,8 +176,8 @@ public class DirectedEulerianCycle {
 
 
     private static void unitTest(Digraph G, String description) {
-        StdOut.println(description);
-        StdOut.println("-------------------------------------");
+        System.out.println(description);
+        System.out.println("-------------------------------------");
         StdOut.print(G);
 
         DirectedEulerianCycle euler = new DirectedEulerianCycle(G);
@@ -187,12 +187,12 @@ public class DirectedEulerianCycle {
             for (int v : euler.cycle()) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
         else {
-            StdOut.println("none");
+            System.out.println("none");
         }
-        StdOut.println();
+        System.out.println();
     }
 
 

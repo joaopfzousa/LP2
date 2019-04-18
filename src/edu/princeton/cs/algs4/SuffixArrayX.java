@@ -239,18 +239,18 @@ public class SuffixArrayX {
         boolean check = true;
         for (int i = 0; check && i < s.length(); i++) {
             if (suffix1.index(i) != suffix2.index(i)) {
-                StdOut.println("suffix1(" + i + ") = " + suffix1.index(i));
-                StdOut.println("suffix2(" + i + ") = " + suffix2.index(i));
+                System.out.println("suffix1(" + i + ") = " + suffix1.index(i));
+                System.out.println("suffix2(" + i + ") = " + suffix2.index(i));
                 String ith = "\"" + s.substring(suffix1.index(i), Math.min(suffix1.index(i) + 50, s.length())) + "\"";
                 String jth = "\"" + s.substring(suffix2.index(i), Math.min(suffix2.index(i) + 50, s.length())) + "\"";
-                StdOut.println(ith);
-                StdOut.println(jth);
+                System.out.println(ith);
+                System.out.println(jth);
                 check = false;
             }
         }
 
-        StdOut.println("  i ind lcp rnk  select");
-        StdOut.println("---------------------------");
+        System.out.println("  i ind lcp rnk  select");
+        System.out.println("---------------------------");
 
         for (int i = 0; i < s.length(); i++) {
             int index = suffix2.index(i);

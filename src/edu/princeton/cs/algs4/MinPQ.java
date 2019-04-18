@@ -280,7 +280,7 @@ public class MinPQ<Key> implements Iterable<Key> {
             if (!item.equals("-")) pq.insert(item);
             else if (!pq.isEmpty()) StdOut.print(pq.delMin() + " ");
         }
-        StdOut.println("(" + pq.size() + " left on pq)");
+        System.out.println("(" + pq.size() + " left on pq)");
     }
 
 }

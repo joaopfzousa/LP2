@@ -103,8 +103,8 @@ public class TransitiveClosure {
         StdOut.print("     ");
         for (int v = 0; v < G.V(); v++)
             StdOut.printf("%3d", v);
-        StdOut.println();
-        StdOut.println("--------------------------------------------");
+        System.out.println();
+        System.out.println("--------------------------------------------");
 
         // print transitive closure
         for (int v = 0; v < G.V(); v++) {
@@ -113,7 +113,7 @@ public class TransitiveClosure {
                 if (tc.reachable(v, w)) StdOut.printf("  T");
                 else                    StdOut.printf("   ");
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 

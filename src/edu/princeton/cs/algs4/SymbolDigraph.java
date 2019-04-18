@@ -182,7 +182,7 @@ public class SymbolDigraph {
         while (!StdIn.isEmpty()) {
             String t = StdIn.readLine();
             for (int v : graph.adj(sg.index(t))) {
-                StdOut.println("   " + sg.name(v));
+                System.out.println("   " + sg.name(v));
             }
         }
     }

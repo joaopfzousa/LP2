@@ -48,7 +48,7 @@ public class RandomSeq {
             // generate and print n numbers between 0.0 and 1.0
             for (int i = 0; i < n; i++) {
                 double x = StdRandom.uniform();
-                StdOut.println(x);
+                System.out.println(x);
             }
         }
 

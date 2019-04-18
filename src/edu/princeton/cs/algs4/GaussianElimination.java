@@ -187,8 +187,8 @@ public class GaussianElimination {
                 sum += A[i][j] * x[j];
             }
             if (Math.abs(sum - b[i]) > EPSILON) {
-                StdOut.println("not feasible");
-                StdOut.println("b[" + i + "] = " + b[i] + ", sum = " + sum);
+                System.out.println("not feasible");
+                System.out.println("b[" + i + "] = " + b[i] + ", sum = " + sum);
                 return false;
             }
         }
@@ -200,9 +200,9 @@ public class GaussianElimination {
      * Unit tests the {@code GaussianElimination} data type.
      */
     private static void test(String name, double[][] A, double[] b) {
-        StdOut.println("----------------------------------------------------");
-        StdOut.println(name);
-        StdOut.println("----------------------------------------------------");
+        System.out.println("----------------------------------------------------");
+        System.out.println(name);
+        System.out.println("----------------------------------------------------");
         GaussianElimination gaussian = new GaussianElimination(A, b);
         double[] x = gaussian.primal();
         if (gaussian.isFeasible()) {
@@ -211,10 +211,10 @@ public class GaussianElimination {
             }
         }
         else {
-            StdOut.println("System is infeasible");
+            System.out.println("System is infeasible");
         }
-        StdOut.println();
-        StdOut.println();
+        System.out.println();
+        System.out.println();
     }
 
 

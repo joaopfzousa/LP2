@@ -58,7 +58,7 @@ public class ThreeSum {
             for (int j = i+1; j < n; j++) {
                 for (int k = j+1; k < n; k++) {
                     if (a[i] + a[j] + a[k] == 0) {
-                        StdOut.println(a[i] + " " + a[j] + " " + a[k]);
+                        System.out.println(a[i] + " " + a[j] + " " + a[k]);
                     }
                 }
             }
@@ -101,8 +101,8 @@ public class ThreeSum {
 
         Stopwatch timer = new Stopwatch();
         int count = count(a);
-        StdOut.println("elapsed time = " + timer.elapsedTime());
-        StdOut.println(count);
+        System.out.println("elapsed time = " + timer.elapsedTime());
+        System.out.println(count);
     } 
 } 
 

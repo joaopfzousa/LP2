@@ -481,9 +481,9 @@ public class BST<Key extends Comparable<Key>, Value> {
     *  Check integrity of BST data structure.
     ***************************************************************************/
     private boolean check() {
-        if (!isBST())            StdOut.println("Not in symmetric order");
-        if (!isSizeConsistent()) StdOut.println("Subtree counts not consistent");
-        if (!isRankConsistent()) StdOut.println("Ranks not consistent");
+        if (!isBST())            System.out.println("Not in symmetric order");
+        if (!isSizeConsistent()) System.out.println("Subtree counts not consistent");
+        if (!isRankConsistent()) System.out.println("Ranks not consistent");
         return isBST() && isSizeConsistent() && isRankConsistent();
     }
 
@@ -536,12 +536,12 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
 
         for (String s : st.levelOrder())
-            StdOut.println(s + " " + st.get(s));
+            System.out.println(s + " " + st.get(s));
 
-        StdOut.println();
+        System.out.println();
 
         for (String s : st.keys())
-            StdOut.println(s + " " + st.get(s));
+            System.out.println(s + " " + st.get(s));
     }
 }
 

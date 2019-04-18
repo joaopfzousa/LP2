@@ -196,7 +196,7 @@ public class KosarajuSharirSCC {
 
         // number of connected components
         int m = scc.count();
-        StdOut.println(m + " strong components");
+        System.out.println(m + " strong components");
 
         // compute list of vertices in each strong component
         Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];
@@ -212,7 +212,7 @@ public class KosarajuSharirSCC {
             for (int v : components[i]) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
 
     }

@@ -280,7 +280,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      */
     public static void main(String[] args) {
         SET<String> set = new SET<String>();
-        StdOut.println("set = " + set);
+        System.out.println("set = " + set);
 
         // insert some keys
         set.add("www.cs.princeton.edu");
@@ -303,30 +303,30 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
         set.add("www.iitb.ac.in");
 
 
-        StdOut.println(set.contains("www.cs.princeton.edu"));
-        StdOut.println(!set.contains("www.harvardsucks.com"));
-        StdOut.println(set.contains("www.simpsons.com"));
-        StdOut.println();
+        System.out.println(set.contains("www.cs.princeton.edu"));
+        System.out.println(!set.contains("www.harvardsucks.com"));
+        System.out.println(set.contains("www.simpsons.com"));
+        System.out.println();
 
-        StdOut.println("ceiling(www.simpsonr.com) = " + set.ceiling("www.simpsonr.com"));
-        StdOut.println("ceiling(www.simpsons.com) = " + set.ceiling("www.simpsons.com"));
-        StdOut.println("ceiling(www.simpsont.com) = " + set.ceiling("www.simpsont.com"));
-        StdOut.println("floor(www.simpsonr.com)   = " + set.floor("www.simpsonr.com"));
-        StdOut.println("floor(www.simpsons.com)   = " + set.floor("www.simpsons.com"));
-        StdOut.println("floor(www.simpsont.com)   = " + set.floor("www.simpsont.com"));
-        StdOut.println();
+        System.out.println("ceiling(www.simpsonr.com) = " + set.ceiling("www.simpsonr.com"));
+        System.out.println("ceiling(www.simpsons.com) = " + set.ceiling("www.simpsons.com"));
+        System.out.println("ceiling(www.simpsont.com) = " + set.ceiling("www.simpsont.com"));
+        System.out.println("floor(www.simpsonr.com)   = " + set.floor("www.simpsonr.com"));
+        System.out.println("floor(www.simpsons.com)   = " + set.floor("www.simpsons.com"));
+        System.out.println("floor(www.simpsont.com)   = " + set.floor("www.simpsont.com"));
+        System.out.println();
 
-        StdOut.println("set = " + set);
-        StdOut.println();
+        System.out.println("set = " + set);
+        System.out.println();
 
         // print out all keys in this set in lexicographic order
         for (String s : set) {
-            StdOut.println(s);
+            System.out.println(s);
         }
 
-        StdOut.println();
+        System.out.println();
         SET<String> set2 = new SET<String>(set);
-        StdOut.println(set.equals(set2));
+        System.out.println(set.equals(set2));
     }
 
 }

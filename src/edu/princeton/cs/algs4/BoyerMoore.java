@@ -158,17 +158,17 @@ public class BoyerMoore {
         int offset2 = boyermoore2.search(text);
 
         // print results
-        StdOut.println("text:    " + txt);
+        System.out.println("text:    " + txt);
 
         StdOut.print("pattern: ");
         for (int i = 0; i < offset1; i++)
             StdOut.print(" ");
-        StdOut.println(pat);
+        System.out.println(pat);
 
         StdOut.print("pattern: ");
         for (int i = 0; i < offset2; i++)
             StdOut.print(" ");
-        StdOut.println(pat);
+        System.out.println(pat);
     }
 }
 

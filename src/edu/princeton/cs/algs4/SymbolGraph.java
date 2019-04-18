@@ -210,11 +210,11 @@ public class SymbolGraph {
             if (sg.contains(source)) {
                 int s = sg.index(source);
                 for (int v : graph.adj(s)) {
-                    StdOut.println("   " + sg.name(v));
+                    System.out.println("   " + sg.name(v));
                 }
             }
             else {
-                StdOut.println("input not contain '" + source + "'");
+                System.out.println("input not contain '" + source + "'");
             }
         }
     }

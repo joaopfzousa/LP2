@@ -100,7 +100,7 @@ public class LongestCommonSubstring {
         In in2 = new In(args[1]);
         String s = in1.readAll().trim().replaceAll("\\s+", " ");
         String t = in2.readAll().trim().replaceAll("\\s+", " ");
-        StdOut.println("'" + lcs(s, t) + "'");
+        System.out.println("'" + lcs(s, t) + "'");
     }
 }
 

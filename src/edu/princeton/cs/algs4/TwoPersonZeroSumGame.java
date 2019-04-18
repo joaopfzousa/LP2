@@ -156,15 +156,15 @@ public class TwoPersonZeroSumGame {
         double sum = 0.0;
         for (int j = 0; j < n; j++) {
             if (x[j] < 0) {
-                StdOut.println("row vector not a probability distribution");
+                System.out.println("row vector not a probability distribution");
                 StdOut.printf("    x[%d] = %f\n", j, x[j]);
                 return false;
             }
             sum += x[j];
         }
         if (Math.abs(sum - 1.0) > EPSILON) {
-            StdOut.println("row vector x[] is not a probability distribution");
-            StdOut.println("    sum = " + sum);
+            System.out.println("row vector x[] is not a probability distribution");
+            System.out.println("    sum = " + sum);
             return false;
         }
         return true;
@@ -176,15 +176,15 @@ public class TwoPersonZeroSumGame {
         double sum = 0.0;
         for (int i = 0; i < m; i++) {
             if (y[i] < 0) {
-                StdOut.println("column vector y[] is not a probability distribution");
+                System.out.println("column vector y[] is not a probability distribution");
                 StdOut.printf("    y[%d] = %f\n", i, y[i]);
                 return false;
             }
             sum += y[i];
         }
         if (Math.abs(sum - 1.0) > EPSILON) {
-            StdOut.println("column vector not a probability distribution");
-            StdOut.println("    sum = " + sum);
+            System.out.println("column vector not a probability distribution");
+            System.out.println("    sum = " + sum);
             return false;
         }
         return true;
@@ -206,8 +206,8 @@ public class TwoPersonZeroSumGame {
             if (sum > opt1) opt1 = sum;
         }
         if (Math.abs(opt1 - value) > EPSILON) {
-            StdOut.println("Optimal value = " + value);
-            StdOut.println("Optimal best response for column player = " + opt1);
+            System.out.println("Optimal value = " + value);
+            System.out.println("Optimal best response for column player = " + opt1);
             return false;
         }
 
@@ -221,8 +221,8 @@ public class TwoPersonZeroSumGame {
             if (sum < opt2) opt2 = sum;
         }
         if (Math.abs(opt2 - value) > EPSILON) {
-            StdOut.println("Optimal value = " + value);
-            StdOut.println("Optimal best response for row player = " + opt2);
+            System.out.println("Optimal value = " + value);
+            System.out.println("Optimal best response for row player = " + opt2);
             return false;
         }
 
@@ -236,9 +236,9 @@ public class TwoPersonZeroSumGame {
 
 
     private static void test(String description, double[][] payoff) {
-        StdOut.println();
-        StdOut.println(description);
-        StdOut.println("------------------------------------");
+        System.out.println();
+        System.out.println(description);
+        System.out.println("------------------------------------");
         int m = payoff.length;
         int n = payoff[0].length;
         TwoPersonZeroSumGame zerosum = new TwoPersonZeroSumGame(payoff);
@@ -254,7 +254,7 @@ public class TwoPersonZeroSumGame {
         for (int i = 0; i < m-1; i++)
             StdOut.printf("%8.4f, ", y[i]);
         StdOut.printf("%8.4f]\n", y[m-1]);
-        StdOut.println("value =  " + zerosum.value());
+        System.out.println("value =  " + zerosum.value());
         
     }
 

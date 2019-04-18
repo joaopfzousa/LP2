@@ -88,11 +88,11 @@ public class StdArrayIO {
      */
     public static void print(double[] a) {
         int n = a.length;
-        StdOut.println(n);
+        System.out.println(n);
         for (int i = 0; i < n; i++) {
             StdOut.printf("%9.5f ", a[i]);
         }
-        StdOut.println();
+        System.out.println();
     }
 
         
@@ -121,12 +121,12 @@ public class StdArrayIO {
     public static void print(double[][] a) {
         int m = a.length;
         int n = a[0].length;
-        StdOut.println(m + " " + n);
+        System.out.println(m + " " + n);
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 StdOut.printf("%9.5f ", a[i][j]);
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 
@@ -152,11 +152,11 @@ public class StdArrayIO {
      */
     public static void print(int[] a) {
         int n = a.length;
-        StdOut.println(n);
+        System.out.println(n);
         for (int i = 0; i < n; i++) {
             StdOut.printf("%9d ", a[i]);
         }
-        StdOut.println();
+        System.out.println();
     }
 
         
@@ -185,12 +185,12 @@ public class StdArrayIO {
     public static void print(int[][] a) {
         int m = a.length;
         int n = a[0].length;
-        StdOut.println(m + " " + n);
+        System.out.println(m + " " + n);
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 StdOut.printf("%9d ", a[i][j]);
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 
@@ -216,12 +216,12 @@ public class StdArrayIO {
      */
     public static void print(boolean[] a) {
         int n = a.length;
-        StdOut.println(n);
+        System.out.println(n);
         for (int i = 0; i < n; i++) {
             if (a[i]) StdOut.print("1 ");
             else      StdOut.print("0 ");
         }
-        StdOut.println();
+        System.out.println();
     }
 
     /**
@@ -249,13 +249,13 @@ public class StdArrayIO {
     public static void print(boolean[][] a) {
         int m = a.length;
         int n = a[0].length;
-        StdOut.println(m + " " + n);
+        System.out.println(m + " " + n);
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (a[i][j]) StdOut.print("1 ");
                 else         StdOut.print("0 ");
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 
@@ -270,17 +270,17 @@ public class StdArrayIO {
         // read and print an array of doubles
         double[] a = StdArrayIO.readDouble1D();
         StdArrayIO.print(a);
-        StdOut.println();
+        System.out.println();
 
         // read and print a matrix of doubles
         double[][] b = StdArrayIO.readDouble2D();
         StdArrayIO.print(b);
-        StdOut.println();
+        System.out.println();
 
         // read and print a matrix of doubles
         boolean[][] d = StdArrayIO.readBoolean2D();
         StdArrayIO.print(d);
-        StdOut.println();
+        System.out.println();
     }
 
 }

@@ -84,7 +84,7 @@ public class LongestRepeatedSubstring {
      */
     public static void main(String[] args) {
         String text = StdIn.readAll().replaceAll("\\s+", " ");
-        StdOut.println("'" + lrs(text) + "'");
+        System.out.println("'" + lrs(text) + "'");
     }
 }
 

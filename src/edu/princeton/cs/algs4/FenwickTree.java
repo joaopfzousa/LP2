@@ -149,7 +149,7 @@ public class FenwickTree {
             }
 
             if ((!line[0].equals("set") && !line[0].equals("init")) && ft == null) {
-                StdOut.println("FenwickTree not initialized");
+                System.out.println("FenwickTree not initialized");
                 continue;
             }
 
@@ -158,7 +158,7 @@ public class FenwickTree {
                 for (int i = 1; i <= ft.size(); i++) {
                     StdOut.print(ft.rsq(i, i) + " ");
                 }
-                StdOut.println();
+                System.out.println();
             }
             else if (line[0].equals("set")) {
                 ft = new FenwickTree(line.length - 1);
@@ -172,13 +172,13 @@ public class FenwickTree {
                 for (int i = 1; i <= ft.size(); i++) {
                     StdOut.print(ft.rsq(i, i) + " ");
                 }
-                StdOut.println();
+                System.out.println();
             }
             else if (line[0].equals("rsq")) {
                 StdOut.printf("Sum from %d to %d = %d%n", arg1, arg2, ft.rsq(arg1, arg2));
             }
             else {
-                StdOut.println("Invalid command");
+                System.out.println("Invalid command");
             }
 
         }

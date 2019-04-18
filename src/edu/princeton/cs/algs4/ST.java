@@ -226,7 +226,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
             st.put(key, i);
         }
         for (String s : st.keys())
-            StdOut.println(s + " " + st.get(s));
+            System.out.println(s + " " + st.get(s));
     }
 }
 

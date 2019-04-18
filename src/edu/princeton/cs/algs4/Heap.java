@@ -83,7 +83,7 @@ public class Heap {
     // print array to standard output
     private static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++) {
-            StdOut.println(a[i]);
+            System.out.println(a[i]);
         }
     }
 

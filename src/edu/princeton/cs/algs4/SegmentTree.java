@@ -289,7 +289,7 @@ public class SegmentTree {
             }
 
             if ((!line[0].equals("set") && !line[0].equals("init")) && st == null) {
-                StdOut.println("Segment Tree not initialized");
+                System.out.println("Segment Tree not initialized");
                 continue;
             }
             int array[];
@@ -308,7 +308,7 @@ public class SegmentTree {
                 for (int i = 0; i < st.size(); i++) {
                     StdOut.print(st.rsq(i, i) + " ");
                 }
-                StdOut.println();
+                System.out.println();
             }
 
             else if (line[0].equals("up")) {
@@ -316,7 +316,7 @@ public class SegmentTree {
                 for (int i = 0; i < st.size(); i++) {
                     StdOut.print(st.rsq(i, i) + " ");
                 }
-                StdOut.println();
+                System.out.println();
             }
             else if (line[0].equals("rsq")) {
                 StdOut.printf("Sum from %d to %d = %d%n", arg1, arg2, st.rsq(arg1, arg2));
@@ -325,7 +325,7 @@ public class SegmentTree {
                 StdOut.printf("Min from %d to %d = %d%n", arg1, arg2, st.rMinQ(arg1, arg2));
             }
             else {
-                StdOut.println("Invalid command");
+                System.out.println("Invalid command");
             }
 
         }

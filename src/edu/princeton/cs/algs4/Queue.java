@@ -175,7 +175,7 @@ public class Queue<Item> implements Iterable<Item> {
             else if (!queue.isEmpty())
                 StdOut.print(queue.dequeue() + " ");
         }
-        StdOut.println("(" + queue.size() + " left on queue)");
+        System.out.println("(" + queue.size() + " left on queue)");
     }
 }
 

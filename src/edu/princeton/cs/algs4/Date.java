@@ -193,22 +193,22 @@ public class Date implements Comparable<Date> {
      */
     public static void main(String[] args) {
         Date today = new Date(2, 25, 2004);
-        StdOut.println(today);
+        System.out.println(today);
         for (int i = 0; i < 10; i++) {
             today = today.next();
-            StdOut.println(today);
+            System.out.println(today);
         }
 
-        StdOut.println(today.isAfter(today.next()));
-        StdOut.println(today.isAfter(today));
-        StdOut.println(today.next().isAfter(today));
+        System.out.println(today.isAfter(today.next()));
+        System.out.println(today.isAfter(today));
+        System.out.println(today.next().isAfter(today));
 
 
         Date birthday = new Date(10, 16, 1971);
-        StdOut.println(birthday);
+        System.out.println(birthday);
         for (int i = 0; i < 10; i++) {
             birthday = birthday.next();
-            StdOut.println(birthday);
+            System.out.println(birthday);
         }
     }
 

@@ -134,7 +134,7 @@ public class DepthFirstPaths {
                     if (x == s) StdOut.print(x);
                     else        StdOut.print("-" + x);
                 }
-                StdOut.println();
+                System.out.println();
             }
 
             else {

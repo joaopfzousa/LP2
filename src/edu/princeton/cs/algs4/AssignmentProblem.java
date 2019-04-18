@@ -210,7 +210,7 @@ public class AssignmentProblem {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (reducedCost(i, j) < 0) {
-                    StdOut.println("Dual variables are not feasible");
+                    System.out.println("Dual variables are not feasible");
                     return false;
                 }
             }
@@ -224,7 +224,7 @@ public class AssignmentProblem {
         // check that all matched edges have 0-reduced cost
         for (int i = 0; i < n; i++) {
             if ((xy[i] != UNMATCHED) && (reducedCost(i, xy[i]) != 0)) {
-                StdOut.println("Primal and dual variables are not complementary slack");
+                System.out.println("Primal and dual variables are not complementary slack");
                 return false;
             }
         }
@@ -238,7 +238,7 @@ public class AssignmentProblem {
         boolean[] perm = new boolean[n];
         for (int i = 0; i < n; i++) {
             if (perm[xy[i]]) {
-                StdOut.println("Not a perfect matching");
+                System.out.println("Not a perfect matching");
                 return false;
             }
             perm[xy[i]] = true;
@@ -247,13 +247,13 @@ public class AssignmentProblem {
         // check that xy[] and yx[] are inverses
         for (int j = 0; j < n; j++) {
             if (xy[yx[j]] != j) {
-                StdOut.println("xy[] and yx[] are not inverses");
+                System.out.println("xy[] and yx[] are not inverses");
                 return false;
             }
         }
         for (int i = 0; i < n; i++) {
             if (yx[xy[i]] != i) {
-                StdOut.println("xy[] and yx[] are not inverses");
+                System.out.println("xy[] and yx[] are not inverses");
                 return false;
             }
         }
@@ -288,7 +288,7 @@ public class AssignmentProblem {
         // solve assignment problem
         AssignmentProblem assignment = new AssignmentProblem(weight);
         StdOut.printf("weight = %.0f\n", assignment.weight());
-        StdOut.println();
+        System.out.println();
 
         // print n-by-n matrix and optimal solution
         if (n >= 20) return;
@@ -299,7 +299,7 @@ public class AssignmentProblem {
                 else
                     StdOut.printf(" %.0f ", weight[i][j]);
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 

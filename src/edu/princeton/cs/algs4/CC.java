@@ -213,7 +213,7 @@ public class CC {
 
         // number of connected components
         int m = cc.count();
-        StdOut.println(m + " components");
+        System.out.println(m + " components");
 
         // compute list of vertices in each connected component
         Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];
@@ -229,7 +229,7 @@ public class CC {
             for (int v : components[i]) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 }

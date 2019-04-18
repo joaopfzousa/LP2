@@ -74,17 +74,17 @@ public class LookupIndex {
             }
         }
 
-        StdOut.println("Done indexing");
+        System.out.println("Done indexing");
 
         // read queries from standard input, one per line
         while (!StdIn.isEmpty()) {
             String query = StdIn.readLine();
             if (st.contains(query)) 
                 for (String vals : st.get(query))
-                    StdOut.println("  " + vals);
+                    System.out.println("  " + vals);
             if (ts.contains(query)) 
                 for (String keys : ts.get(query))
-                    StdOut.println("  " + keys);
+                    System.out.println("  " + keys);
         }
 
     }

@@ -94,7 +94,7 @@ public class FarthestPair {
 
         int j = k;
         for (int i = 1; i <= k && j <= m; i++) {
-            // StdOut.println("hull[i] + " and " + hull[j] + " are antipodal");
+            // System.out.println("hull[i] + " and " + hull[j] + " are antipodal");
             if (hull[i].distanceSquaredTo(hull[j]) > bestDistanceSquared) {
                 best1 = hull[i];
                 best2 = hull[j];
@@ -102,7 +102,7 @@ public class FarthestPair {
             }
             while ((j < m) && Point2D.area2(hull[i], hull[i+1], hull[j+1]) > Point2D.area2(hull[i], hull[i+1], hull[j])) {
                 j++;
-                // StdOut.println(hull[i] + " and " + hull[j] + " are antipodal");
+                // System.out.println(hull[i] + " and " + hull[j] + " are antipodal");
                 double distanceSquared = hull[i].distanceSquaredTo(hull[j]);
                 if (distanceSquared > bestDistanceSquared) {
                     best1 = hull[i];
@@ -163,7 +163,7 @@ public class FarthestPair {
             points[i] = new Point2D(x, y);
         }
         FarthestPair farthest = new FarthestPair(points);
-        StdOut.println(farthest.distance() + " from " + farthest.either() + " to " + farthest.other());
+        System.out.println(farthest.distance() + " from " + farthest.either() + " to " + farthest.other());
     }
 
 }

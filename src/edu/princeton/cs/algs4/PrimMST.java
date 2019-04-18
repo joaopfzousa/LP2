@@ -214,7 +214,7 @@ public class PrimMST {
         EdgeWeightedGraph G = new EdgeWeightedGraph(in);
         PrimMST mst = new PrimMST(G);
         for (Edge e : mst.edges()) {
-            StdOut.println(e);
+            System.out.println(e);
         }
         StdOut.printf("%.5f\n", mst.weight());
     }

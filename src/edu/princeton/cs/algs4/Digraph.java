@@ -252,7 +252,7 @@ public class Digraph {
     public static void main(String[] args) {
         In in = new In(args[0]);
         Digraph G = new Digraph(in);
-        StdOut.println(G);
+        System.out.println(G);
     }
 
 }

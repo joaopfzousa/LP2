@@ -142,9 +142,9 @@ public class LinkedBag<Item> implements Iterable<Item> {
             bag.add(item);
         }
 
-        StdOut.println("size of bag = " + bag.size());
+        System.out.println("size of bag = " + bag.size());
         for (String s : bag) {
-            StdOut.println(s);
+            System.out.println(s);
         }
     }
 

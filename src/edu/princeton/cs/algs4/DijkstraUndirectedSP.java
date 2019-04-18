@@ -239,7 +239,7 @@ public class DijkstraUndirectedSP {
                 for (Edge e : sp.pathTo(t)) {
                     StdOut.print(e + "   ");
                 }
-                StdOut.println();
+                System.out.println();
             }
             else {
                 StdOut.printf("%d to %d         no path\n", s, t);

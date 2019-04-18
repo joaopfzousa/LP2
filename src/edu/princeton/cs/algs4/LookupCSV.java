@@ -68,8 +68,8 @@ public class LookupCSV {
 
         while (!StdIn.isEmpty()) {
             String s = StdIn.readString();
-            if (st.contains(s)) StdOut.println(st.get(s));
-            else                StdOut.println("Not found");
+            if (st.contains(s)) System.out.println(st.get(s));
+            else                System.out.println("Not found");
         }
     }
 }

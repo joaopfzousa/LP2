@@ -15,6 +15,8 @@ public class Pessoa {
 
   private String apelidoPessoa;
 
+  private Integer cc;
+
   private Date dataNasc;
 
   private Integer idEmpresa;
@@ -34,10 +36,11 @@ public class Pessoa {
      *s
      * Construtor
      */
-  public Pessoa(Integer idPessoa, String nomePessoa, String apelidoPessoa, Date dataNasc, Integer idEmpresa, Integer idLocalizacao) {
+  public Pessoa(Integer idPessoa, String nomePessoa, String apelidoPessoa, Integer cc, Date dataNasc, Integer idEmpresa, Integer idLocalizacao) {
       this.idPessoa = idPessoa;
       this.nomePessoa = nomePessoa;
       this.apelidoPessoa = apelidoPessoa;
+      this.cc = cc;
       this.dataNasc = dataNasc;
       this.idEmpresa = idEmpresa;
       this.idLocalizacao = idLocalizacao;
@@ -61,6 +64,14 @@ public class Pessoa {
 
     public void setApelidoPessoa(String apelidoPessoa) {
         this.apelidoPessoa = apelidoPessoa;
+    }
+
+    public Integer getcc() {
+        return cc;
+    }
+
+    public void setcc(Integer cc) {
+        this.cc = cc;
     }
 
     public Date getDataNasc() {
@@ -149,6 +160,7 @@ public class Pessoa {
                 "idPessoa=" + idPessoa +
                 ", nomePessoa='" + nomePessoa + '\'' +
                 ", apelidoPessoa='" + apelidoPessoa + '\'' +
+                ", cc='" + cc + '\'' +
                 ", dataNasc=" + dataNasc +
                 ", IdEmpresa=" + idEmpresa +
                 ", idLocalizacao=" + idLocalizacao +
@@ -267,7 +279,7 @@ public class Pessoa {
 
 
     public String toStringFicheiroPessoa(){
-        return idPessoa + ";" + nomePessoa + ";" + apelidoPessoa + ";" + dataNasc + ";" + idEmpresa + ";" +  idLocalizacao + ";";
+        return idPessoa + ";" + nomePessoa + ";" + apelidoPessoa + ";" + cc + ":" + dataNasc + ";" + idEmpresa + ";" +  idLocalizacao + ";";
     }
 
 

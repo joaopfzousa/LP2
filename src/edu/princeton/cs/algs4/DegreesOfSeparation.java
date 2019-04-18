@@ -96,12 +96,12 @@ public class DegreesOfSeparation {
         String delimiter = args[1];
         String source    = args[2];
 
-        // StdOut.println("Source: " + source);
+        // System.out.println("Source: " + source);
 
         SymbolGraph sg = new SymbolGraph(filename, delimiter);
         Graph G = sg.graph();
         if (!sg.contains(source)) {
-            StdOut.println(source + " not in database.");
+            System.out.println(source + " not in database.");
             return;
         }
 
@@ -114,15 +114,15 @@ public class DegreesOfSeparation {
                 int t = sg.indexOf(sink);
                 if (bfs.hasPathTo(t)) {
                     for (int v : bfs.pathTo(t)) {
-                        StdOut.println("   " + sg.nameOf(v));
+                        System.out.println("   " + sg.nameOf(v));
                     }
                 }
                 else {
-                    StdOut.println("Not connected");
+                    System.out.println("Not connected");
                 }
             }
             else {
-                StdOut.println("   Not in database.");
+                System.out.println("   Not in database.");
             }
         }
     }

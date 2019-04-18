@@ -88,8 +88,8 @@ public class CPM {
         AcyclicLP lp = new AcyclicLP(G, source);
 
         // print results
-        StdOut.println(" job   start  finish");
-        StdOut.println("--------------------");
+        System.out.println(" job   start  finish");
+        System.out.println("--------------------");
         for (int i = 0; i < n; i++) {
             StdOut.printf("%4d %7.1f %7.1f\n", i, lp.distTo(i), lp.distTo(i+n));
         }

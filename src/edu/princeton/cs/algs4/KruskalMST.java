@@ -184,7 +184,7 @@ public class KruskalMST {
         EdgeWeightedGraph G = new EdgeWeightedGraph(in);
         KruskalMST mst = new KruskalMST(G);
         for (Edge e : mst.edges()) {
-            StdOut.println(e);
+            System.out.println(e);
         }
         StdOut.printf("%.5f\n", mst.weight());
     }

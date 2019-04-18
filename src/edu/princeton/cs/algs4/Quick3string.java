@@ -146,7 +146,7 @@ public class Quick3string {
 
         // print the results
         for (int i = 0; i < n; i++)
-            StdOut.println(a[i]);
+            System.out.println(a[i]);
     }
 }
 

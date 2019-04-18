@@ -33,7 +33,7 @@ import java.util.Locale;
  *           int a = 17;
  *           int b = 23;
  *           int sum = a + b;
- *           StdOut.println("Hello, World");
+ *           System.out.println("Hello, World");
  *           StdOut.printf("%d + %d = %d\n", a, b, sum);
  *       }
  *   }
@@ -88,7 +88,7 @@ public final class StdOut {
    /**
      * Closes standard output.
      * @deprecated Calling close() permanently disables standard output;
-     *             subsequent calls to StdOut.println() or System.out.println()
+     *             subsequent calls to System.out.println() or System.out.println()
      *             will no longer produce output on standard output.
      */
     @Deprecated
@@ -317,9 +317,9 @@ public final class StdOut {
     public static void main(String[] args) {
 
         // write to stdout
-        StdOut.println("Test");
-        StdOut.println(17);
-        StdOut.println(true);
+        System.out.println("Test");
+        System.out.println(17);
+        System.out.println(true);
         StdOut.printf("%.6f\n", 1.0/7.0);
     }
 

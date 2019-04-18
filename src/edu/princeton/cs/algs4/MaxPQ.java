@@ -289,7 +289,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
             if (!item.equals("-")) pq.insert(item);
             else if (!pq.isEmpty()) StdOut.print(pq.delMax() + " ");
         }
-        StdOut.println("(" + pq.size() + " left on pq)");
+        System.out.println("(" + pq.size() + " left on pq)");
     }
 
 }

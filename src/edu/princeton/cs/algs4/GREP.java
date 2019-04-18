@@ -58,7 +58,7 @@ public class GREP {
         while (StdIn.hasNextLine()) { 
             String line = StdIn.readLine();
             if (nfa.recognizes(line)) {
-                StdOut.println(line);
+                System.out.println(line);
             }
         }
     } 

@@ -64,12 +64,12 @@ public class BinaryDump {
                 BinaryStdIn.readBoolean();
                 continue;
             }
-            else if (count != 0 && count % bitsPerLine == 0) StdOut.println();
+            else if (count != 0 && count % bitsPerLine == 0) System.out.println();
             if (BinaryStdIn.readBoolean()) StdOut.print(1);
             else                           StdOut.print(0);
         }
-        if (bitsPerLine != 0) StdOut.println();
-        StdOut.println(count + " bits");
+        if (bitsPerLine != 0) System.out.println();
+        System.out.println(count + " bits");
     }
 }
 

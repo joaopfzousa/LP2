@@ -101,7 +101,7 @@ public class BinarySearch {
         while (!StdIn.isEmpty()) {
             int key = StdIn.readInt();
             if (BinarySearch.indexOf(whitelist, key) == -1)
-                StdOut.println(key);
+                System.out.println(key);
         }
     }
 }

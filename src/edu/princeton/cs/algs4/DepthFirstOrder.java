@@ -177,7 +177,7 @@ public class DepthFirstOrder {
         int r = 0;
         for (int v : post()) {
             if (post(v) != r) {
-                StdOut.println("post(v) and post() inconsistent");
+                System.out.println("post(v) and post() inconsistent");
                 return false;
             }
             r++;
@@ -187,7 +187,7 @@ public class DepthFirstOrder {
         r = 0;
         for (int v : pre()) {
             if (pre(v) != r) {
-                StdOut.println("pre(v) and pre() inconsistent");
+                System.out.println("pre(v) and pre() inconsistent");
                 return false;
             }
             r++;
@@ -213,8 +213,8 @@ public class DepthFirstOrder {
         Digraph G = new Digraph(in);
 
         DepthFirstOrder dfs = new DepthFirstOrder(G);
-        StdOut.println("   v  pre post");
-        StdOut.println("--------------");
+        System.out.println("   v  pre post");
+        System.out.println("--------------");
         for (int v = 0; v < G.V(); v++) {
             StdOut.printf("%4d %4d %4d\n", v, dfs.pre(v), dfs.post(v));
         }
@@ -223,19 +223,19 @@ public class DepthFirstOrder {
         for (int v : dfs.pre()) {
             StdOut.print(v + " ");
         }
-        StdOut.println();
+        System.out.println();
 
         StdOut.print("Postorder: ");
         for (int v : dfs.post()) {
             StdOut.print(v + " ");
         }
-        StdOut.println();
+        System.out.println();
 
         StdOut.print("Reverse postorder: ");
         for (int v : dfs.reversePost()) {
             StdOut.print(v + " ");
         }
-        StdOut.println();
+        System.out.println();
 
 
     }

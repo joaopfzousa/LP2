@@ -156,7 +156,7 @@ public class Quick {
     // print array to standard output
     private static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++) {
-            StdOut.println(a[i]);
+            System.out.println(a[i]);
         }
     }
 
@@ -178,10 +178,10 @@ public class Quick {
         StdRandom.shuffle(a);
 
         // display results again using select
-        StdOut.println();
+        System.out.println();
         for (int i = 0; i < a.length; i++) {
             String ith = (String) Quick.select(a, i);
-            StdOut.println(ith);
+            System.out.println(ith);
         }
     }
 

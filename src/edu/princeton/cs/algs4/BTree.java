@@ -272,18 +272,18 @@ public class BTree<Key extends Comparable<Key>, Value>  {
         st.put("www.yahoo.com",        "216.109.118.65");
 
 
-        StdOut.println("cs.princeton.edu:  " + st.get("www.cs.princeton.edu"));
-        StdOut.println("hardvardsucks.com: " + st.get("www.harvardsucks.com"));
-        StdOut.println("simpsons.com:      " + st.get("www.simpsons.com"));
-        StdOut.println("apple.com:         " + st.get("www.apple.com"));
-        StdOut.println("ebay.com:          " + st.get("www.ebay.com"));
-        StdOut.println("dell.com:          " + st.get("www.dell.com"));
-        StdOut.println();
+        System.out.println("cs.princeton.edu:  " + st.get("www.cs.princeton.edu"));
+        System.out.println("hardvardsucks.com: " + st.get("www.harvardsucks.com"));
+        System.out.println("simpsons.com:      " + st.get("www.simpsons.com"));
+        System.out.println("apple.com:         " + st.get("www.apple.com"));
+        System.out.println("ebay.com:          " + st.get("www.ebay.com"));
+        System.out.println("dell.com:          " + st.get("www.dell.com"));
+        System.out.println();
 
-        StdOut.println("size:    " + st.size());
-        StdOut.println("height:  " + st.height());
-        StdOut.println(st);
-        StdOut.println();
+        System.out.println("size:    " + st.size());
+        System.out.println("height:  " + st.height());
+        System.out.println(st);
+        System.out.println();
     }
 
 }

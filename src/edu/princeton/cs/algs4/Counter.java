@@ -111,7 +111,7 @@ public class Counter implements Comparable<Counter> {
 
         // print results
         for (int i = 0; i < n; i++) {
-            StdOut.println(hits[i]);
+            System.out.println(hits[i]);
         }
     } 
 } 

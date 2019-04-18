@@ -133,7 +133,7 @@ public class NonrecursiveDFS {
         for (int v = 0; v < G.V(); v++)
             if (dfs.marked(v))
                 StdOut.print(v + " ");
-        StdOut.println();
+        System.out.println();
     }
 
 

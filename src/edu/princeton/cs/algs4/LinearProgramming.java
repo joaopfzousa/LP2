@@ -194,7 +194,7 @@ public class LinearProgramming {
         // check that x >= 0
         for (int j = 0; j < x.length; j++) {
             if (x[j] < 0.0) {
-                StdOut.println("x[" + j + "] = " + x[j] + " is negative");
+                System.out.println("x[" + j + "] = " + x[j] + " is negative");
                 return false;
             }
         }
@@ -206,8 +206,8 @@ public class LinearProgramming {
                 sum += A[i][j] * x[j];
             }
             if (sum > b[i] + EPSILON) {
-                StdOut.println("not primal feasible");
-                StdOut.println("b[" + i + "] = " + b[i] + ", sum = " + sum);
+                System.out.println("not primal feasible");
+                System.out.println("b[" + i + "] = " + b[i] + ", sum = " + sum);
                 return false;
             }
         }
@@ -221,7 +221,7 @@ public class LinearProgramming {
         // check that y >= 0
         for (int i = 0; i < y.length; i++) {
             if (y[i] < 0.0) {
-                StdOut.println("y[" + i + "] = " + y[i] + " is negative");
+                System.out.println("y[" + i + "] = " + y[i] + " is negative");
                 return false;
             }
         }
@@ -233,8 +233,8 @@ public class LinearProgramming {
                 sum += A[i][j] * y[i];
             }
             if (sum < c[j] - EPSILON) {
-                StdOut.println("not dual feasible");
-                StdOut.println("c[" + j + "] = " + c[j] + ", sum = " + sum);
+                System.out.println("not dual feasible");
+                System.out.println("c[" + j + "] = " + c[j] + ", sum = " + sum);
                 return false;
             }
         }
@@ -255,7 +255,7 @@ public class LinearProgramming {
         for (int i = 0; i < y.length; i++)
             value2 += y[i] * b[i];
         if (Math.abs(value - value1) > EPSILON || Math.abs(value - value2) > EPSILON) {
-            StdOut.println("value = " + value + ", cx = " + value1 + ", yb = " + value2);
+            System.out.println("value = " + value + ", cx = " + value1 + ", yb = " + value2);
             return false;
         }
 
@@ -268,19 +268,19 @@ public class LinearProgramming {
 
     // print tableaux
     private void show() {
-        StdOut.println("m = " + m);
-        StdOut.println("n = " + n);
+        System.out.println("m = " + m);
+        System.out.println("n = " + n);
         for (int i = 0; i <= m; i++) {
             for (int j = 0; j <= m+n; j++) {
                 StdOut.printf("%7.2f ", a[i][j]);
                 // StdOut.printf("%10.7f ", a[i][j]);
             }
-            StdOut.println();
+            System.out.println();
         }
-        StdOut.println("value = " + value());
+        System.out.println("value = " + value());
         for (int i = 0; i < m; i++)
-            if (basis[i] < n) StdOut.println("x_" + basis[i] + " = " + a[i][m+n]);
-        StdOut.println();
+            if (basis[i] < n) System.out.println("x_" + basis[i] + " = " + a[i][m+n]);
+        System.out.println();
     }
 
 
@@ -294,13 +294,13 @@ public class LinearProgramming {
             return;
         }
 
-        StdOut.println("value = " + lp.value());
+        System.out.println("value = " + lp.value());
         double[] x = lp.primal();
         for (int i = 0; i < x.length; i++)
-            StdOut.println("x[" + i + "] = " + x[i]);
+            System.out.println("x[" + i + "] = " + x[i]);
         double[] y = lp.dual();
         for (int j = 0; j < y.length; j++)
-            StdOut.println("y[" + j + "] = " + y[j]);
+            System.out.println("y[" + j + "] = " + y[j]);
     }
 
     private static void test1() {
@@ -360,23 +360,23 @@ public class LinearProgramming {
      */
     public static void main(String[] args) {
 
-        StdOut.println("----- test 1 --------------------");
+        System.out.println("----- test 1 --------------------");
         test1();
-        StdOut.println();
+        System.out.println();
 
-        StdOut.println("----- test 2 --------------------");
+        System.out.println("----- test 2 --------------------");
         test2();
-        StdOut.println();
+        System.out.println();
 
-        StdOut.println("----- test 3 --------------------");
+        System.out.println("----- test 3 --------------------");
         test3();
-        StdOut.println();
+        System.out.println();
 
-        StdOut.println("----- test 4 --------------------");
+        System.out.println("----- test 4 --------------------");
         test4();
-        StdOut.println();
+        System.out.println();
 
-        StdOut.println("----- test random ---------------");
+        System.out.println("----- test random ---------------");
         int m = Integer.parseInt(args[0]);
         int n = Integer.parseInt(args[1]);
         double[] c = new double[n];

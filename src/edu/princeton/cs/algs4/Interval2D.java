@@ -138,7 +138,7 @@ public class Interval2D {
             else                     point.draw();
         }
 
-        StdOut.println(counter);
+        System.out.println(counter);
         StdOut.printf("box area = %.2f\n", box.area());
     }
 }

@@ -412,59 +412,59 @@ public class GraphGenerator {
         int V1 = V/2;
         int V2 = V - V1;
 
-        StdOut.println("complete graph");
-        StdOut.println(complete(V));
-        StdOut.println();
+        System.out.println("complete graph");
+        System.out.println(complete(V));
+        System.out.println();
 
-        StdOut.println("simple");
-        StdOut.println(simple(V, E));
-        StdOut.println();
+        System.out.println("simple");
+        System.out.println(simple(V, E));
+        System.out.println();
 
-        StdOut.println("Erdos-Renyi");
+        System.out.println("Erdos-Renyi");
         double p = (double) E / (V*(V-1)/2.0);
-        StdOut.println(simple(V, p));
-        StdOut.println();
+        System.out.println(simple(V, p));
+        System.out.println();
 
-        StdOut.println("complete bipartite");
-        StdOut.println(completeBipartite(V1, V2));
-        StdOut.println();
+        System.out.println("complete bipartite");
+        System.out.println(completeBipartite(V1, V2));
+        System.out.println();
 
-        StdOut.println("bipartite");
-        StdOut.println(bipartite(V1, V2, E));
-        StdOut.println();
+        System.out.println("bipartite");
+        System.out.println(bipartite(V1, V2, E));
+        System.out.println();
 
-        StdOut.println("Erdos Renyi bipartite");
+        System.out.println("Erdos Renyi bipartite");
         double q = (double) E / (V1*V2);
-        StdOut.println(bipartite(V1, V2, q));
-        StdOut.println();
+        System.out.println(bipartite(V1, V2, q));
+        System.out.println();
 
-        StdOut.println("path");
-        StdOut.println(path(V));
-        StdOut.println();
+        System.out.println("path");
+        System.out.println(path(V));
+        System.out.println();
 
-        StdOut.println("cycle");
-        StdOut.println(cycle(V));
-        StdOut.println();
+        System.out.println("cycle");
+        System.out.println(cycle(V));
+        System.out.println();
 
-        StdOut.println("binary tree");
-        StdOut.println(binaryTree(V));
-        StdOut.println();
+        System.out.println("binary tree");
+        System.out.println(binaryTree(V));
+        System.out.println();
 
-        StdOut.println("tree");
-        StdOut.println(tree(V));
-        StdOut.println();
+        System.out.println("tree");
+        System.out.println(tree(V));
+        System.out.println();
 
-        StdOut.println("4-regular");
-        StdOut.println(regular(V, 4));
-        StdOut.println();
+        System.out.println("4-regular");
+        System.out.println(regular(V, 4));
+        System.out.println();
 
-        StdOut.println("star");
-        StdOut.println(star(V));
-        StdOut.println();
+        System.out.println("star");
+        System.out.println(star(V));
+        System.out.println();
 
-        StdOut.println("wheel");
-        StdOut.println(wheel(V));
-        StdOut.println();
+        System.out.println("wheel");
+        System.out.println(wheel(V));
+        System.out.println();
     }
 
 }

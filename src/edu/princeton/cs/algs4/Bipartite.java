@@ -189,14 +189,14 @@ public class Bipartite {
             G.addEdge(v, w);
         }
 
-        StdOut.println(G);
+        System.out.println(G);
 
 
         Bipartite b = new Bipartite(G);
         if (b.isBipartite()) {
-            StdOut.println("Graph is bipartite");
+            System.out.println("Graph is bipartite");
             for (int v = 0; v < G.V(); v++) {
-                StdOut.println(v + ": " + b.color(v));
+                System.out.println(v + ": " + b.color(v));
             }
         }
         else {
@@ -204,7 +204,7 @@ public class Bipartite {
             for (int x : b.oddCycle()) {
                 StdOut.print(x + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 

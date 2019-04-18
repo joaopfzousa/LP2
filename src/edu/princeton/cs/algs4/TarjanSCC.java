@@ -169,7 +169,7 @@ public class TarjanSCC {
 
         // number of connected components
         int m = scc.count();
-        StdOut.println(m + " components");
+        System.out.println(m + " components");
 
         // compute list of vertices in each strong component
         Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];
@@ -185,7 +185,7 @@ public class TarjanSCC {
             for (int v : components[i]) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
 
     }

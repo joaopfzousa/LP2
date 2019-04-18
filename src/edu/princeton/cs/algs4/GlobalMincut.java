@@ -292,8 +292,8 @@ public class GlobalMincut {
         for (int v = 0; v < G.V(); v++) {
             if (mc.cut(v)) StdOut.print(v + " ");
         }
-        StdOut.println();
-        StdOut.println("Min cut weight = " + mc.weight());
+        System.out.println();
+        System.out.println("Min cut weight = " + mc.weight());
     }
 }
 

@@ -147,7 +147,7 @@ public class AcyclicSP {
                 for (DirectedEdge e : sp.pathTo(v)) {
                     StdOut.print(e + "   ");
                 }
-                StdOut.println();
+                System.out.println();
             }
             else {
                 StdOut.printf("%d to %d         no path\n", s, v);

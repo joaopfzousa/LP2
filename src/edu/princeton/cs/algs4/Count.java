@@ -69,7 +69,7 @@ public class Count {
                 count[alphabet.toIndex(c)]++;
         }
         for (int c = 0; c < R; c++)
-            StdOut.println(alphabet.toChar(c) + " " + count[c]);
+            System.out.println(alphabet.toChar(c) + " " + count[c]);
     }
 }
 

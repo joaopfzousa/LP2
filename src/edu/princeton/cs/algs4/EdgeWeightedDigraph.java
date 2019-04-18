@@ -250,7 +250,7 @@ public class EdgeWeightedDigraph {
     public static void main(String[] args) {
         In in = new In(args[0]);
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
-        StdOut.println(G);
+        System.out.println(G);
     }
 
 }

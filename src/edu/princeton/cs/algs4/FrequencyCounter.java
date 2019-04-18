@@ -79,9 +79,9 @@ public class FrequencyCounter {
                 max = word;
         }
 
-        StdOut.println(max + " " + st.get(max));
-        StdOut.println("distinct = " + distinct);
-        StdOut.println("words    = " + words);
+        System.out.println(max + " " + st.get(max));
+        System.out.println("distinct = " + distinct);
+        System.out.println("words    = " + words);
     }
 }
 

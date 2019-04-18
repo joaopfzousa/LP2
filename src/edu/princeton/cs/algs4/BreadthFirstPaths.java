@@ -194,7 +194,7 @@ public class BreadthFirstPaths {
 
         // check that the distance of s = 0
         if (distTo[s] != 0) {
-            StdOut.println("distance of source " + s + " to itself = " + distTo[s]);
+            System.out.println("distance of source " + s + " to itself = " + distTo[s]);
             return false;
         }
 
@@ -203,15 +203,15 @@ public class BreadthFirstPaths {
         for (int v = 0; v < G.V(); v++) {
             for (int w : G.adj(v)) {
                 if (hasPathTo(v) != hasPathTo(w)) {
-                    StdOut.println("edge " + v + "-" + w);
-                    StdOut.println("hasPathTo(" + v + ") = " + hasPathTo(v));
-                    StdOut.println("hasPathTo(" + w + ") = " + hasPathTo(w));
+                    System.out.println("edge " + v + "-" + w);
+                    System.out.println("hasPathTo(" + v + ") = " + hasPathTo(v));
+                    System.out.println("hasPathTo(" + w + ") = " + hasPathTo(w));
                     return false;
                 }
                 if (hasPathTo(v) && (distTo[w] > distTo[v] + 1)) {
-                    StdOut.println("edge " + v + "-" + w);
-                    StdOut.println("distTo[" + v + "] = " + distTo[v]);
-                    StdOut.println("distTo[" + w + "] = " + distTo[w]);
+                    System.out.println("edge " + v + "-" + w);
+                    System.out.println("distTo[" + v + "] = " + distTo[v]);
+                    System.out.println("distTo[" + w + "] = " + distTo[w]);
                     return false;
                 }
             }
@@ -223,9 +223,9 @@ public class BreadthFirstPaths {
             if (!hasPathTo(w) || w == s) continue;
             int v = edgeTo[w];
             if (distTo[w] != distTo[v] + 1) {
-                StdOut.println("shortest path edge " + v + "-" + w);
-                StdOut.println("distTo[" + v + "] = " + distTo[v]);
-                StdOut.println("distTo[" + w + "] = " + distTo[w]);
+                System.out.println("shortest path edge " + v + "-" + w);
+                System.out.println("distTo[" + v + "] = " + distTo[v]);
+                System.out.println("distTo[" + w + "] = " + distTo[w]);
                 return false;
             }
         }
@@ -261,7 +261,7 @@ public class BreadthFirstPaths {
     public static void main(String[] args) {
         In in = new In(args[0]);
         Graph G = new Graph(in);
-        // StdOut.println(G);
+        // System.out.println(G);
 
         int s = Integer.parseInt(args[1]);
         BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
@@ -273,7 +273,7 @@ public class BreadthFirstPaths {
                     if (x == s) StdOut.print(x);
                     else        StdOut.print("-" + x);
                 }
-                StdOut.println();
+                System.out.println();
             }
 
             else {

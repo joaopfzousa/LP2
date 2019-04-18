@@ -281,14 +281,14 @@ public class TopologicalX {
             G2.addEdge(new DirectedEdge(v, w, 0.0));
         }
 
-        StdOut.println(G1);
-        StdOut.println();
-        StdOut.println(G2);
+        System.out.println(G1);
+        System.out.println();
+        System.out.println(G2);
 
         // find a directed cycle
         TopologicalX topological1 = new TopologicalX(G1);
         if (!topological1.hasOrder()) {
-            StdOut.println("Not a DAG");
+            System.out.println("Not a DAG");
         }
 
         // or give topologial sort
@@ -297,13 +297,13 @@ public class TopologicalX {
             for (int v : topological1.order()) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
 
         // find a directed cycle
         TopologicalX topological2 = new TopologicalX(G2);
         if (!topological2.hasOrder()) {
-            StdOut.println("Not a DAG");
+            System.out.println("Not a DAG");
         }
 
         // or give topologial sort
@@ -312,7 +312,7 @@ public class TopologicalX {
             for (int v : topological2.order()) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
     }
 

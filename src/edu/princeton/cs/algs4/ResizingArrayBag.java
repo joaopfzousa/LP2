@@ -110,7 +110,7 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
         bag.add("you");
 
         for (String s : bag)
-            StdOut.println(s);
+            System.out.println(s);
     }
 
 }

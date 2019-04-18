@@ -148,7 +148,7 @@ public class AcyclicLP {
                 for (DirectedEdge e : lp.pathTo(v)) {
                     StdOut.print(e + "   ");
                 }
-                StdOut.println();
+                System.out.println();
             }
             else {
                 StdOut.printf("%d to %d         no path\n", s, v);

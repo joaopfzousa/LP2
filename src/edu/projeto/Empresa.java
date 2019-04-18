@@ -28,8 +28,6 @@ public class Empresa {
                 "idEmpresa=" + idEmpresa +
                 ", nomeEmpresa='" + nomeEmpresa + '\'' +
                 ", areaEmpresa='" + areaEmpresa + '\'' +
-                ", pessoasST=" + pessoasST +
-                ", encontrosST=" + encontrosST +
                 ", idLocalizacao=" + idLocalizacao +
                 '}';
     }
@@ -112,9 +110,9 @@ public class Empresa {
      *
      * Funções
      */
-    public static void addPessoa(RedBlackBST<Integer,Pessoa> pessoasST, Integer idPessoa, String nomePessoa, String apelidoPessoa, Date dataNasc, Integer idEmpresa, Integer idLocalizacao) {
+    public static void addPessoa(RedBlackBST<Integer,Pessoa> pessoasST, Integer idPessoa, String nomePessoa, String apelidoPessoa, Integer cc, Date dataNasc, Integer idEmpresa, Integer idLocalizacao) {
 
-        Pessoa aux_pessoa = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, dataNasc, idEmpresa, idLocalizacao);
+        Pessoa aux_pessoa = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, cc, dataNasc, idEmpresa, idLocalizacao);
         pessoasST.put(idPessoa, aux_pessoa);
 
         if(pessoasST.contains(idPessoa)){
@@ -125,7 +123,7 @@ public class Empresa {
     }
 
 
-    public static String removePessoa(RedBlackBST<Integer,Pessoa> pessoasST,RedBlackBST<Integer,Encontro> encontrosST, SeparateChainingHashST<Integer,Competencia> competenciasST, SeparateChainingHashST<Integer,Area> areasST, RedBlackBST<Integer,Historico> empregosST, Integer idPessoa) {
+    public static String removePessoa(RedBlackBST<Integer,Pessoa> pessoasST,RedBlackBST<Date,Encontro> encontrosST, SeparateChainingHashST<Integer,Competencia> competenciasST, SeparateChainingHashST<Integer,Area> areasST, RedBlackBST<Date,Historico> empregosST, Integer idPessoa) {
 
         for(Integer id_paux : pessoasST.keys()){
             Pessoa p = (Pessoa) pessoasST.get(id_paux);
@@ -133,10 +131,10 @@ public class Empresa {
                 pessoasST.delete(id_paux);
             }
         }
-        for(Integer id_enaux : encontrosST.keys()) {
-            Encontro en = (Encontro) encontrosST.get(id_enaux);
-            if (en.getIdEncontro().equals(idPessoa)) {
-                encontrosST.delete(id_enaux);
+        for(Date dateaux : encontrosST.keys()) {
+            Encontro en = (Encontro) encontrosST.get(dateaux);
+            if (en.getDataInicio().equals(idPessoa)) {
+                encontrosST.delete(dateaux);
             }
         }
         for(Integer id_conaux : competenciasST.keys()) {
@@ -151,10 +149,10 @@ public class Empresa {
                 areasST.delete(id_araux);
             }
         }
-        for(Integer id_hisaux : empregosST.keys()) {
-            Historico his = (Historico) empregosST.get(id_hisaux);
+        for(Date daux : empregosST.keys()) {
+            Historico his = (Historico) empregosST.get(daux);
             if (his.getIdHistorico().equals(idPessoa)) {
-                empregosST.delete(id_hisaux);
+                empregosST.delete(daux);
             }
         }
         return "Empresa" + idPessoa + "apagada com sucesso";

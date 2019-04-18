@@ -56,7 +56,7 @@ public class DeDup {
             String key = StdIn.readString();
             if (!set.contains(key)) {
                 set.add(key);
-                StdOut.println(key);
+                System.out.println(key);
             }
         }
     }

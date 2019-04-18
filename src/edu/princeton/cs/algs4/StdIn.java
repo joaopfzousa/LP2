@@ -78,7 +78,7 @@ import java.util.regex.Pattern;
  *  <pre>
  *  while (!StdIn.isEmpty()) {
  *      double value = StdIn.readDouble();
- *      StdOut.println(value);
+ *      System.out.println(value);
  *  }
  *  </pre>
  *  <p>
@@ -124,7 +124,7 @@ import java.util.regex.Pattern;
  *  <pre>
  *  while (StdIn.hasNextLine()) {
  *      String line = StdIn.readLine();
- *      StdOut.println(line);
+ *      System.out.println(line);
  *  }
  *  </pre>
  *  <p>
@@ -650,23 +650,23 @@ public final class StdIn {
 
         StdOut.print("Type a string: ");
         String s = StdIn.readString();
-        StdOut.println("Your string was: " + s);
-        StdOut.println();
+        System.out.println("Your string was: " + s);
+        System.out.println();
 
         StdOut.print("Type an int: ");
         int a = StdIn.readInt();
-        StdOut.println("Your int was: " + a);
-        StdOut.println();
+        System.out.println("Your int was: " + a);
+        System.out.println();
 
         StdOut.print("Type a boolean: ");
         boolean b = StdIn.readBoolean();
-        StdOut.println("Your boolean was: " + b);
-        StdOut.println();
+        System.out.println("Your boolean was: " + b);
+        System.out.println();
 
         StdOut.print("Type a double: ");
         double c = StdIn.readDouble();
-        StdOut.println("Your double was: " + c);
-        StdOut.println();
+        System.out.println("Your double was: " + c);
+        System.out.println();
     }
 
 }

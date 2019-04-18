@@ -201,7 +201,7 @@ public class LazyPrimMST {
         EdgeWeightedGraph G = new EdgeWeightedGraph(in);
         LazyPrimMST mst = new LazyPrimMST(G);
         for (Edge e : mst.edges()) {
-            StdOut.println(e);
+            System.out.println(e);
         }
         StdOut.printf("%.5f\n", mst.weight());
     }

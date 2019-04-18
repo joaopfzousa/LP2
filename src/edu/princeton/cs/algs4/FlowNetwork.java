@@ -187,7 +187,7 @@ public class FlowNetwork {
     public static void main(String[] args) {
         In in = new In(args[0]);
         FlowNetwork G = new FlowNetwork(in);
-        StdOut.println(G);
+        System.out.println(G);
     }
 
 }

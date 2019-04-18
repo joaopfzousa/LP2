@@ -116,7 +116,7 @@ public class Accumulator {
         StdOut.printf("mean   = %.5f\n", stats.mean());
         StdOut.printf("stddev = %.5f\n", stats.stddev());
         StdOut.printf("var    = %.5f\n", stats.var());
-        StdOut.println(stats);
+        System.out.println(stats);
     }
 }
 

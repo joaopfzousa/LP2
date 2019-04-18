@@ -210,7 +210,7 @@ public class GaussJordanElimination {
             }
             StdOut.printf("| %8.3f\n", a[i][n+n]);
         }
-        StdOut.println();
+        System.out.println();
     }
 
 
@@ -226,7 +226,7 @@ public class GaussJordanElimination {
                     sum += A[i][j] * x[j];
                 }
                 if (Math.abs(sum - b[i]) > EPSILON) {
-                    StdOut.println("not feasible");
+                    System.out.println("not feasible");
                     StdOut.printf("b[%d] = %8.3f, sum = %8.3f\n", i, b[i], sum);
                     return false;
                 }
@@ -243,7 +243,7 @@ public class GaussJordanElimination {
                     sum += A[i][j] * y[i];
                 }
                 if (Math.abs(sum) > EPSILON) {
-                    StdOut.println("invalid certificate of infeasibility");
+                    System.out.println("invalid certificate of infeasibility");
                     StdOut.printf("sum = %8.3f\n", sum);
                     return false;
                 }
@@ -253,7 +253,7 @@ public class GaussJordanElimination {
                 sum += y[i] * b[i];
             }
             if (Math.abs(sum) < EPSILON) {
-                StdOut.println("invalid certificate of infeasibility");
+                System.out.println("invalid certificate of infeasibility");
                 StdOut.printf("yb  = %8.3f\n", sum);
                 return false;
             }
@@ -263,26 +263,26 @@ public class GaussJordanElimination {
 
 
     private static void test(String name, double[][] A, double[] b) {
-        StdOut.println("----------------------------------------------------");
-        StdOut.println(name);
-        StdOut.println("----------------------------------------------------");
+        System.out.println("----------------------------------------------------");
+        System.out.println(name);
+        System.out.println("----------------------------------------------------");
         GaussJordanElimination gaussian = new GaussJordanElimination(A, b);
         if (gaussian.isFeasible()) {
-            StdOut.println("Solution to Ax = b");
+            System.out.println("Solution to Ax = b");
             double[] x = gaussian.primal();
             for (int i = 0; i < x.length; i++) {
                 StdOut.printf("%10.6f\n", x[i]);
             }
         }
         else {
-            StdOut.println("Certificate of infeasibility");
+            System.out.println("Certificate of infeasibility");
             double[] y = gaussian.dual();
             for (int j = 0; j < y.length; j++) {
                 StdOut.printf("%10.6f\n", y[j]);
             }
         }
-        StdOut.println();
-        StdOut.println();
+        System.out.println();
+        System.out.println();
     }
 
 

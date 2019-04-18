@@ -162,10 +162,10 @@ public class Cycle {
             for (int v : finder.cycle()) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
         else {
-            StdOut.println("Graph is acyclic");
+            System.out.println("Graph is acyclic");
         }
     }
 

@@ -112,7 +112,7 @@ public class Edge implements Comparable<Edge> {
      */
     public static void main(String[] args) {
         Edge e = new Edge(12, 34, 5.67);
-        StdOut.println(e);
+        System.out.println(e);
     }
 }
 

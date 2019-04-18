@@ -631,7 +631,7 @@ public final class StdRandom {
         int[] frequencies = { 5, 3, 1, 1 };
         String[] a = "A B C D E F G".split(" ");
 
-        StdOut.println("seed = " + StdRandom.getSeed());
+        System.out.println("seed = " + StdRandom.getSeed());
         for (int i = 0; i < n; i++) {
             StdOut.printf("%2d ",   uniform(100));
             StdOut.printf("%8.5f ", uniform(10.0, 99.0));
@@ -643,7 +643,7 @@ public final class StdRandom {
             StdRandom.shuffle(a);
             for (String s : a)
                 StdOut.print(s);
-            StdOut.println();
+            System.out.println();
         }
     }
 

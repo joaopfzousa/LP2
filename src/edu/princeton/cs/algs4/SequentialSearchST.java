@@ -205,7 +205,7 @@ public class SequentialSearchST<Key, Value> {
             st.put(key, i);
         }
         for (String s : st.keys())
-            StdOut.println(s + " " + st.get(s));
+            System.out.println(s + " " + st.get(s));
     }
 }
 

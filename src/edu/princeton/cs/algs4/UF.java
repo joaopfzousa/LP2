@@ -208,9 +208,9 @@ public class UF {
             int q = StdIn.readInt();
             if (uf.connected(p, q)) continue;
             uf.union(p, q);
-            StdOut.println(p + " " + q);
+            System.out.println(p + " " + q);
         }
-        StdOut.println(uf.count() + " components");
+        System.out.println(uf.count() + " components");
     }
 }
 

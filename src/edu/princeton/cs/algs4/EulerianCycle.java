@@ -220,8 +220,8 @@ public class EulerianCycle {
     }
 
     private static void unitTest(Graph G, String description) {
-        StdOut.println(description);
-        StdOut.println("-------------------------------------");
+        System.out.println(description);
+        System.out.println("-------------------------------------");
         StdOut.print(G);
 
         EulerianCycle euler = new EulerianCycle(G);
@@ -231,12 +231,12 @@ public class EulerianCycle {
             for (int v : euler.cycle()) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
         else {
-            StdOut.println("none");
+            System.out.println("none");
         }
-        StdOut.println();
+        System.out.println();
     }
 
 

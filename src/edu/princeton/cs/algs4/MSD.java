@@ -220,7 +220,7 @@ public class MSD {
         int n = a.length;
         sort(a);
         for (int i = 0; i < n; i++)
-            StdOut.println(a[i]);
+            System.out.println(a[i]);
     }
 }
 

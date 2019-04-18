@@ -184,8 +184,8 @@ public class DirectedEulerianPath {
 
 
     private static void unitTest(Digraph G, String description) {
-        StdOut.println(description);
-        StdOut.println("-------------------------------------");
+        System.out.println(description);
+        System.out.println("-------------------------------------");
         StdOut.print(G);
 
         DirectedEulerianPath euler = new DirectedEulerianPath(G);
@@ -195,12 +195,12 @@ public class DirectedEulerianPath {
             for (int v : euler.path()) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
         else {
-            StdOut.println("none");
+            System.out.println("none");
         }
-        StdOut.println();
+        System.out.println();
     }
 
     /**

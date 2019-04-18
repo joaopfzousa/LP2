@@ -174,7 +174,7 @@ public class EdgeWeightedDirectedCycle {
             G.addEdge(new DirectedEdge(v, w, weight));
         }
 
-        StdOut.println(G);
+        System.out.println(G);
 
         // find a directed cycle
         EdgeWeightedDirectedCycle finder = new EdgeWeightedDirectedCycle(G);
@@ -183,12 +183,12 @@ public class EdgeWeightedDirectedCycle {
             for (DirectedEdge e : finder.cycle()) {
                 StdOut.print(e + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
 
         // or give topologial sort
         else {
-            StdOut.println("No directed cycle");
+            System.out.println("No directed cycle");
         }
     }
 

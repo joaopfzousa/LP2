@@ -247,8 +247,8 @@ public class BellmanFordSP {
             }
         }
 
-        StdOut.println("Satisfies optimality conditions");
-        StdOut.println();
+        System.out.println("Satisfies optimality conditions");
+        System.out.println();
         return true;
     }
 
@@ -274,7 +274,7 @@ public class BellmanFordSP {
         // print negative cycle
         if (sp.hasNegativeCycle()) {
             for (DirectedEdge e : sp.negativeCycle())
-                StdOut.println(e);
+                System.out.println(e);
         }
 
         // print shortest paths
@@ -285,7 +285,7 @@ public class BellmanFordSP {
                     for (DirectedEdge e : sp.pathTo(v)) {
                         StdOut.print(e + "   ");
                     }
-                    StdOut.println();
+                    System.out.println();
                 }
                 else {
                     StdOut.printf("%d to %d           no path\n", s, v);

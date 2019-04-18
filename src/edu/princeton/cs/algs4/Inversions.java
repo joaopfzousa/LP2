@@ -169,8 +169,8 @@ public class Inversions {
         Integer[] b = new Integer[n];
         for (int i = 0; i < n; i++)
             b[i] = a[i];
-        StdOut.println(Inversions.count(a));
-        StdOut.println(Inversions.count(b));
+        System.out.println(Inversions.count(a));
+        System.out.println(Inversions.count(b));
     }
 }
 

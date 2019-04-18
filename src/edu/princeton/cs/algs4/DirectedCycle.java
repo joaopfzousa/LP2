@@ -144,13 +144,13 @@ public class DirectedCycle {
             for (int v : finder.cycle()) {
                 StdOut.print(v + " ");
             }
-            StdOut.println();
+            System.out.println();
         }
 
         else {
-            StdOut.println("No directed cycle");
+            System.out.println("No directed cycle");
         }
-        StdOut.println();
+        System.out.println();
     }
 
 }

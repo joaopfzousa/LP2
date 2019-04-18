@@ -198,7 +198,7 @@ public class FlowEdge {
      */
     public static void main(String[] args) {
         FlowEdge e = new FlowEdge(12, 23, 4.56);
-        StdOut.println(e);
+        System.out.println(e);
     }
 
 }

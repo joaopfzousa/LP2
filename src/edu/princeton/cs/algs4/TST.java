@@ -270,29 +270,29 @@ public class TST<Value> {
 
         // print results
         if (st.size() < 100) {
-            StdOut.println("keys(\"\"):");
+            System.out.println("keys(\"\"):");
             for (String key : st.keys()) {
-                StdOut.println(key + " " + st.get(key));
+                System.out.println(key + " " + st.get(key));
             }
-            StdOut.println();
+            System.out.println();
         }
 
-        StdOut.println("longestPrefixOf(\"shellsort\"):");
-        StdOut.println(st.longestPrefixOf("shellsort"));
-        StdOut.println();
+        System.out.println("longestPrefixOf(\"shellsort\"):");
+        System.out.println(st.longestPrefixOf("shellsort"));
+        System.out.println();
 
-        StdOut.println("longestPrefixOf(\"shell\"):");
-        StdOut.println(st.longestPrefixOf("shell"));
-        StdOut.println();
+        System.out.println("longestPrefixOf(\"shell\"):");
+        System.out.println(st.longestPrefixOf("shell"));
+        System.out.println();
 
-        StdOut.println("keysWithPrefix(\"shor\"):");
+        System.out.println("keysWithPrefix(\"shor\"):");
         for (String s : st.keysWithPrefix("shor"))
-            StdOut.println(s);
-        StdOut.println();
+            System.out.println(s);
+        System.out.println();
 
-        StdOut.println("keysThatMatch(\".he.l.\"):");
+        System.out.println("keysThatMatch(\".he.l.\"):");
         for (String s : st.keysThatMatch(".he.l."))
-            StdOut.println(s);
+            System.out.println(s);
     }
 }
 

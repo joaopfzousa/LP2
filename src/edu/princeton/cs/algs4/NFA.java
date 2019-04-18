@@ -148,7 +148,7 @@ public class NFA {
         String regexp = "(" + args[0] + ")";
         String txt = args[1];
         NFA nfa = new NFA(regexp);
-        StdOut.println(nfa.recognizes(txt));
+        System.out.println(nfa.recognizes(txt));
     }
 
 } 

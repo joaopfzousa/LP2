@@ -190,7 +190,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
             else if (!stack.isEmpty())
                 StdOut.print(stack.pop() + " ");
         }
-        StdOut.println("(" + stack.size() + " left on stack)");
+        System.out.println("(" + stack.size() + " left on stack)");
     }
 }
 

@@ -226,7 +226,7 @@ public class FloydWarshall {
             else G.addEdge(new DirectedEdge(v, w, weight));
         }
 
-        StdOut.println(G);
+        System.out.println(G);
 
         // run Floyd-Warshall algorithm
         FloydWarshall spt = new FloydWarshall(G);
@@ -236,22 +236,22 @@ public class FloydWarshall {
         for (int v = 0; v < G.V(); v++) {
             StdOut.printf("%6d ", v);
         }
-        StdOut.println();
+        System.out.println();
         for (int v = 0; v < G.V(); v++) {
             StdOut.printf("%3d: ", v);
             for (int w = 0; w < G.V(); w++) {
                 if (spt.hasPath(v, w)) StdOut.printf("%6.2f ", spt.dist(v, w));
                 else StdOut.printf("  Inf ");
             }
-            StdOut.println();
+            System.out.println();
         }
 
         // print negative cycle
         if (spt.hasNegativeCycle()) {
-            StdOut.println("Negative cost cycle:");
+            System.out.println("Negative cost cycle:");
             for (DirectedEdge e : spt.negativeCycle())
-                StdOut.println(e);
-            StdOut.println();
+                System.out.println(e);
+            System.out.println();
         }
 
         // print all-pairs shortest paths
@@ -262,7 +262,7 @@ public class FloydWarshall {
                         StdOut.printf("%d to %d (%5.2f)  ", v, w, spt.dist(v, w));
                         for (DirectedEdge e : spt.path(v, w))
                             StdOut.print(e + "  ");
-                        StdOut.println();
+                        System.out.println();
                     }
                     else {
                         StdOut.printf("%d to %d no path\n", v, w);

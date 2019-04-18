@@ -150,7 +150,7 @@ public class LSD {
 
         // print results
         for (int i = 0; i < n; i++)
-            StdOut.println(a[i]);
+            System.out.println(a[i]);
     }
 }
 

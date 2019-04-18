@@ -154,7 +154,7 @@ public class Topological {
         SymbolDigraph sg = new SymbolDigraph(filename, delimiter);
         Topological topological = new Topological(sg.digraph());
         for (int v : topological.order()) {
-            StdOut.println(sg.nameOf(v));
+            System.out.println(sg.nameOf(v));
         }
     }
 

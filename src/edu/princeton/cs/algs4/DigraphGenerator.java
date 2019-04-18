@@ -494,57 +494,57 @@ public class DigraphGenerator {
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);
         int E = Integer.parseInt(args[1]);
-        StdOut.println("complete graph");
-        StdOut.println(complete(V));
-        StdOut.println();
+        System.out.println("complete graph");
+        System.out.println(complete(V));
+        System.out.println();
 
-        StdOut.println("simple");
-        StdOut.println(simple(V, E));
-        StdOut.println();
+        System.out.println("simple");
+        System.out.println(simple(V, E));
+        System.out.println();
 
-        StdOut.println("path");
-        StdOut.println(path(V));
-        StdOut.println();
+        System.out.println("path");
+        System.out.println(path(V));
+        System.out.println();
 
-        StdOut.println("cycle");
-        StdOut.println(cycle(V));
-        StdOut.println();
+        System.out.println("cycle");
+        System.out.println(cycle(V));
+        System.out.println();
 
-        StdOut.println("Eulierian path");
-        StdOut.println(eulerianPath(V, E));
-        StdOut.println();
+        System.out.println("Eulierian path");
+        System.out.println(eulerianPath(V, E));
+        System.out.println();
 
-        StdOut.println("Eulierian cycle");
-        StdOut.println(eulerianCycle(V, E));
-        StdOut.println();
+        System.out.println("Eulierian cycle");
+        System.out.println(eulerianCycle(V, E));
+        System.out.println();
 
-        StdOut.println("binary tree");
-        StdOut.println(binaryTree(V));
-        StdOut.println();
+        System.out.println("binary tree");
+        System.out.println(binaryTree(V));
+        System.out.println();
 
-        StdOut.println("tournament");
-        StdOut.println(tournament(V));
-        StdOut.println();
+        System.out.println("tournament");
+        System.out.println(tournament(V));
+        System.out.println();
 
-        StdOut.println("DAG");
-        StdOut.println(dag(V, E));
-        StdOut.println();
+        System.out.println("DAG");
+        System.out.println(dag(V, E));
+        System.out.println();
 
-        StdOut.println("rooted-in DAG");
-        StdOut.println(rootedInDAG(V, E));
-        StdOut.println();
+        System.out.println("rooted-in DAG");
+        System.out.println(rootedInDAG(V, E));
+        System.out.println();
 
-        StdOut.println("rooted-out DAG");
-        StdOut.println(rootedOutDAG(V, E));
-        StdOut.println();
+        System.out.println("rooted-out DAG");
+        System.out.println(rootedOutDAG(V, E));
+        System.out.println();
 
-        StdOut.println("rooted-in tree");
-        StdOut.println(rootedInTree(V));
-        StdOut.println();
+        System.out.println("rooted-in tree");
+        System.out.println(rootedInTree(V));
+        System.out.println();
 
-        StdOut.println("rooted-out DAG");
-        StdOut.println(rootedOutTree(V));
-        StdOut.println();
+        System.out.println("rooted-out DAG");
+        System.out.println(rootedOutTree(V));
+        System.out.println();
     }
 
 }

@@ -61,7 +61,7 @@ public class WhiteFilter {
         while (!StdIn.isEmpty()) {
             String word = StdIn.readString();
             if (set.contains(word))
-                StdOut.println(word);
+                System.out.println(word);
         }
     }
 }

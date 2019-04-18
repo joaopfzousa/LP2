@@ -314,7 +314,7 @@ public class BipartiteMatching {
         int E  = Integer.parseInt(args[2]);
         Graph G = GraphGenerator.bipartite(V1, V2, E);
 
-        if (G.V() < 1000) StdOut.println(G);
+        if (G.V() < 1000) System.out.println(G);
 
         BipartiteMatching matching = new BipartiteMatching(G);
         
@@ -322,7 +322,7 @@ public class BipartiteMatching {
         StdOut.printf("Number of edges in max matching        = %d\n", matching.size());
         StdOut.printf("Number of vertices in min vertex cover = %d\n", matching.size());
         StdOut.printf("Graph has a perfect matching           = %b\n", matching.isPerfect());
-        StdOut.println();
+        System.out.println();
 
         if (G.V() >= 1000) return;
 
@@ -332,14 +332,14 @@ public class BipartiteMatching {
             if (matching.isMatched(v) && v < w)  // print each edge only once
                 StdOut.print(v + "-" + w + " ");
         }
-        StdOut.println();
+        System.out.println();
 
         // print minimum vertex cover
         StdOut.print("Min vertex cover: ");
         for (int v = 0; v < G.V(); v++)
             if (matching.inMinVertexCover(v))
                 StdOut.print(v + " ");
-        StdOut.println();
+        System.out.println();
     }
 
 }

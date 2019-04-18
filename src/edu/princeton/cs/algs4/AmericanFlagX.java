@@ -172,7 +172,7 @@ public class AmericanFlagX {
         sort(a);
         // print results
         for (int i = 0; i < a.length; i++)
-            StdOut.println(a[i]);
+            System.out.println(a[i]);
     }
 }
 

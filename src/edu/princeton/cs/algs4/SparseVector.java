@@ -212,10 +212,10 @@ public class SparseVector {
         a.put(6, 0.00);
         b.put(3, 0.60);
         b.put(4, 0.90);
-        StdOut.println("a = " + a);
-        StdOut.println("b = " + b);
-        StdOut.println("a dot b = " + a.dot(b));
-        StdOut.println("a + b   = " + a.plus(b));
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+        System.out.println("a dot b = " + a.dot(b));
+        System.out.println("a + b   = " + a.plus(b));
     }
 
 }

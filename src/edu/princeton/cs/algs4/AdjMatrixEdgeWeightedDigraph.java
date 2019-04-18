@@ -186,7 +186,7 @@ public class AdjMatrixEdgeWeightedDigraph {
         int V = Integer.parseInt(args[0]);
         int E = Integer.parseInt(args[1]);
         AdjMatrixEdgeWeightedDigraph G = new AdjMatrixEdgeWeightedDigraph(V, E);
-        StdOut.println(G);
+        System.out.println(G);
     }
 
 }

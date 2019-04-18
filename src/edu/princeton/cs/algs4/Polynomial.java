@@ -251,17 +251,17 @@ public class Polynomial {
         Polynomial t    = p.compose(q);
         Polynomial u    = p.minus(p);
 
-        StdOut.println("zero(x)     = " + zero);
-        StdOut.println("p(x)        = " + p);
-        StdOut.println("q(x)        = " + q);
-        StdOut.println("p(x) + q(x) = " + r);
-        StdOut.println("p(x) * q(x) = " + s);
-        StdOut.println("p(q(x))     = " + t);
-        StdOut.println("p(x) - p(x) = " + u);
-        StdOut.println("0 - p(x)    = " + zero.minus(p));
-        StdOut.println("p(3)        = " + p.evaluate(3));
-        StdOut.println("p'(x)       = " + p.differentiate());
-        StdOut.println("p''(x)      = " + p.differentiate().differentiate());
+        System.out.println("zero(x)     = " + zero);
+        System.out.println("p(x)        = " + p);
+        System.out.println("q(x)        = " + q);
+        System.out.println("p(x) + q(x) = " + r);
+        System.out.println("p(x) * q(x) = " + s);
+        System.out.println("p(q(x))     = " + t);
+        System.out.println("p(x) - p(x) = " + u);
+        System.out.println("0 - p(x)    = " + zero.minus(p));
+        System.out.println("p(3)        = " + p.evaluate(3));
+        System.out.println("p'(x)       = " + p.differentiate());
+        System.out.println("p''(x)      = " + p.differentiate().differentiate());
     }
 }
 

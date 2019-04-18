@@ -5,8 +5,6 @@ import edu.princeton.cs.algs4.RedBlackBST;
 
 public class Encontro {
 
-  private Integer idEncontro;
-
   private Date dataInicio;
 
   private Date dataFinal;
@@ -22,7 +20,6 @@ public class Encontro {
     @Override
     public String toString() {
         return "Encontro{" +
-                "idEncontro=" + idEncontro +
                 ", dataInicio=" + dataInicio +
                 ", dataFinal=" + dataFinal +
                 ", pessoasST=" + pessoasST +
@@ -36,8 +33,7 @@ public class Encontro {
    *
    * Construtor
    */
-  public Encontro(Integer idEncontro, Date dataInicio, Date dataFinal, Integer idEmpresa,Integer idLocalizacao, Integer idArea) {
-    this.idEncontro = idEncontro;
+  public Encontro(Date dataInicio, Date dataFinal, Integer idEmpresa,Integer idLocalizacao, Integer idArea) {
     this.dataInicio = dataInicio;
     this.dataFinal = dataFinal;
     this.idEmpresa = idEmpresa;
@@ -50,9 +46,6 @@ public class Encontro {
    *
    * Getter and Setter
    */
-  public Integer getIdEncontro() { return idEncontro; }
-
-  public void setIdEncontro(Integer idEncontro) { this.idEncontro = idEncontro; }
 
   public Date getDataInicio() {
     return dataInicio;
@@ -113,7 +106,7 @@ public class Encontro {
      * Funções
      */
     public String toStringFicheiroEncontro(){
-        return idEncontro + ";" + dataInicio + ";" + dataFinal + ";" + idEmpresa + ";" + idLocalizacao + ";" + idArea + ";";
+        return  dataInicio + ";" + dataFinal + ";" + idEmpresa + ";" + idLocalizacao + ";" + idArea + ";";
     }
 
 

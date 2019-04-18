@@ -152,7 +152,7 @@ public class GrahamScan {
         }
         GrahamScan graham = new GrahamScan(points);
         for (Point2D p : graham.hull())
-            StdOut.println(p);
+            System.out.println(p);
     }
 
 }

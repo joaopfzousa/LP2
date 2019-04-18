@@ -119,7 +119,7 @@ public class ClosestPair {
                         bestDistance = delta;
                         best1 = aux[i];
                         best2 = aux[j];
-                        // StdOut.println("better distance = " + delta + " from " + best1 + " to " + best2);
+                        // System.out.println("better distance = " + delta + " from " + best1 + " to " + best2);
                     }
                 }
             }
@@ -201,7 +201,7 @@ public class ClosestPair {
             points[i] = new Point2D(x, y);
         }
         ClosestPair closest = new ClosestPair(points);
-        StdOut.println(closest.distance() + " from " + closest.either() + " to " + closest.other());
+        System.out.println(closest.distance() + " from " + closest.either() + " to " + closest.other());
     }
 
 }

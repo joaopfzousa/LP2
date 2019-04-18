@@ -64,7 +64,7 @@ public class TopM {
         for (Transaction transaction : pq)
             stack.push(transaction);
         for (Transaction transaction : stack)
-            StdOut.println(transaction);
+            System.out.println(transaction);
     } 
 } 
 

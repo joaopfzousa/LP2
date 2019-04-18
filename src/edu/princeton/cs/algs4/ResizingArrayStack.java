@@ -164,7 +164,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
             if (!item.equals("-")) stack.push(item);
             else if (!stack.isEmpty()) StdOut.print(stack.pop() + " ");
         }
-        StdOut.println("(" + stack.size() + " left on stack)");
+        System.out.println("(" + stack.size() + " left on stack)");
     }
 }
 

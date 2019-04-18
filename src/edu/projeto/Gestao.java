@@ -122,7 +122,7 @@ public class Gestao {
         }
     }
 
-    public static String removeEmpresa(SeparateChainingHashST <Integer,Empresa>empresasST, RedBlackBST<Integer,Pessoa> pessoasST, RedBlackBST<Integer,Encontro> encontrosST,  Integer idEmpresa) {
+    public static String removeEmpresa(SeparateChainingHashST <Integer,Empresa>empresasST, RedBlackBST<Integer,Pessoa> pessoasST, RedBlackBST<Date,Encontro> encontrosST,  Integer idEmpresa) {
         for(Integer id_emaux : empresasST.keys()){
             Empresa em = (Empresa) empresasST.get(id_emaux);
             if(em.getIdEmpresa().equals(idEmpresa)){
@@ -135,10 +135,10 @@ public class Gestao {
                 pessoasST.delete(id_paux);
             }
         }
-        for(Integer id_enpaux : encontrosST.keys()) {
-            Encontro en = (Encontro) encontrosST.get(id_enpaux);
-            if (en.getIdEncontro().equals(idEmpresa)) {
-                encontrosST.delete(id_enpaux);
+        for(Date enpaux : encontrosST.keys()) {
+            Encontro en = (Encontro) encontrosST.get(enpaux);
+            if (en.getDataInicio().equals(idEmpresa)) {
+                encontrosST.delete(enpaux);
             }
         }
         return "Empresa" + idEmpresa + "apagada com sucesso";
@@ -194,9 +194,9 @@ public class Gestao {
   }
 
 
-  public static void listarEncontro(RedBlackBST<Integer,Encontro> encontrosST) {
-      for (Integer idaux : encontrosST.keys()) {
-          Encontro en = (Encontro) encontrosST.get(idaux);
+  public static void listarEncontro(RedBlackBST<Date,Encontro> encontrosST) {
+      for (Date daux : encontrosST.keys()) {
+          Encontro en = (Encontro) encontrosST.get(daux);
           System.out.println(en.toString());
       }
 
@@ -314,14 +314,13 @@ public class Gestao {
         In in = new In(path);
         while (!in.isEmpty()){
             String[] split = in.readLine().split(";");
-            Integer idEncontro = Integer.parseInt(split[0]);
-            String dataInicio = split[1];
-            String dataFinal = split[2];
-            Integer idEmpresa = Integer.parseInt(split[3]);
-            Integer idLocalizacao = Integer.parseInt(split[4]);
-            Integer idArea = Integer.parseInt(split[5]);
+            String dataInicio = split[0];
+            String dataFinal = split[1];
+            Integer idEmpresa = Integer.parseInt(split[2]);
+            Integer idLocalizacao = Integer.parseInt(split[3]);
+            Integer idArea = Integer.parseInt(split[4]);
 
-            Encontro en =  new Encontro(idEncontro,new Date(dataInicio), new Date(dataFinal), idEmpresa, idLocalizacao, idArea);
+            Encontro en =  new Encontro(new Date(dataInicio), new Date(dataFinal), idEmpresa, idLocalizacao, idArea);
             encontrosST.put(en.getDataInicio(), en);
 
         }
@@ -344,9 +343,9 @@ public class Gestao {
             Integer idHistorico = Integer.parseInt(split[0]);
             String dataInicio = split[1];
             String dataFim = split[2];
-            String cargo = split[2];
-            Integer idPessoa = Integer.parseInt(split[3]);
-            Integer idEmpresa = Integer.parseInt(split[4]);
+            String cargo = split[3];
+            Integer idPessoa = Integer.parseInt(split[4]);
+            Integer idEmpresa = Integer.parseInt(split[5]);
 
             Historico hi =  new Historico(idHistorico, new Date(dataInicio), new Date(dataFim), cargo, idPessoa, idEmpresa);
             historicoST.put(hi.getDataInicio(), hi);
@@ -398,11 +397,12 @@ public class Gestao {
             Integer idPessoa = Integer.parseInt(split[0]);
             String nomePessoa = split[1];
             String apelidoPessoa = split[2];
-            String dataNasc = split[3];
-            Integer idEmpresa = Integer.parseInt(split[4]);
-            Integer idLocalizacao = Integer.parseInt(split[5]);
+            Integer cc = Integer.parseInt(split[3]);
+            String dataNasc = split[4];
+            Integer idEmpresa = Integer.parseInt(split[5]);
+            Integer idLocalizacao = Integer.parseInt(split[6]);
 
-            Pessoa p = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, new Date(dataNasc), idEmpresa, idLocalizacao);
+            Pessoa p = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, cc,  new Date(dataNasc), idEmpresa, idLocalizacao);
             pessoasST.put(idPessoa, p);
 
         }
@@ -419,6 +419,29 @@ public class Gestao {
             }
         }
         return "Guardou historico da pessoa" + idPessoa + "com Sucesso";
+    }
+
+
+    public static boolean idEmpresaValida(SeparateChainingHashST <Integer,Empresa> empresasST, Integer idEmpresa) {
+
+        for (Integer idAux : empresasST.keys()) {
+            Empresa en = empresasST.get(idAux);
+            if (en.getIdLocalizacao().equals(idEmpresa)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean idPessoaValida(RedBlackBST<Integer,Pessoa> pessoasST, Integer idPessoa) {
+
+        for (Integer idAux : pessoasST.keys()) {
+            Pessoa p = pessoasST.get(idAux);
+            if (p.getIdPessoa().equals(idPessoa)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

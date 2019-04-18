@@ -59,7 +59,7 @@ public class Multiway {
             if (!streams[i].isEmpty())
                 pq.insert(i, streams[i].readString());
         }
-        StdOut.println();
+        System.out.println();
     }
 
 

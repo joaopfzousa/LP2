@@ -84,9 +84,9 @@ public class KWIK {
                 if (!query.equals(text.substring(from1, to1))) break;
                 int from2 = Math.max(0, sa.index(i) - context);
                 int to2   = Math.min(n, sa.index(i) + context + query.length());
-                StdOut.println(text.substring(from2, to2));
+                System.out.println(text.substring(from2, to2));
             }
-            StdOut.println();
+            System.out.println();
         }
     } 
 } 

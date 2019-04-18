@@ -254,34 +254,34 @@ public class TrieSET implements Iterable<String> {
 
         // print results
         if (set.size() < 100) {
-            StdOut.println("keys(\"\"):");
+            System.out.println("keys(\"\"):");
             for (String key : set) {
-                StdOut.println(key);
+                System.out.println(key);
             }
-            StdOut.println();
+            System.out.println();
         }
 
-        StdOut.println("longestPrefixOf(\"shellsort\"):");
-        StdOut.println(set.longestPrefixOf("shellsort"));
-        StdOut.println();
+        System.out.println("longestPrefixOf(\"shellsort\"):");
+        System.out.println(set.longestPrefixOf("shellsort"));
+        System.out.println();
 
-        StdOut.println("longestPrefixOf(\"xshellsort\"):");
-        StdOut.println(set.longestPrefixOf("xshellsort"));
-        StdOut.println();
+        System.out.println("longestPrefixOf(\"xshellsort\"):");
+        System.out.println(set.longestPrefixOf("xshellsort"));
+        System.out.println();
 
-        StdOut.println("keysWithPrefix(\"shor\"):");
+        System.out.println("keysWithPrefix(\"shor\"):");
         for (String s : set.keysWithPrefix("shor"))
-            StdOut.println(s);
-        StdOut.println();
+            System.out.println(s);
+        System.out.println();
 
-        StdOut.println("keysWithPrefix(\"shortening\"):");
+        System.out.println("keysWithPrefix(\"shortening\"):");
         for (String s : set.keysWithPrefix("shortening"))
-            StdOut.println(s);
-        StdOut.println();
+            System.out.println(s);
+        System.out.println();
 
-        StdOut.println("keysThatMatch(\".he.l.\"):");
+        System.out.println("keysThatMatch(\".he.l.\"):");
         for (String s : set.keysThatMatch(".he.l."))
-            StdOut.println(s);
+            System.out.println(s);
     }
 }
 

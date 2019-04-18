@@ -458,8 +458,8 @@ public final class GrayscalePicture implements ActionListener {
             int col = StdIn.readInt();
             int gray = StdIn.readInt();
             picture.setGrayscale(row, col, gray);
-            StdOut.println(picture.get(row, col));
-            StdOut.println(picture.getGrayscale(row, col));
+            System.out.println(picture.get(row, col));
+            System.out.println(picture.getGrayscale(row, col));
         }
     }
 

@@ -233,19 +233,19 @@ public class Vector {
         Vector x = new Vector(xdata);
         Vector y = new Vector(ydata);
 
-        StdOut.println("   x       = " + x);
-        StdOut.println("   y       = " + y);
+        System.out.println("   x       = " + x);
+        System.out.println("   y       = " + y);
 
         Vector z = x.plus(y);
-        StdOut.println("   z       = " + z);
+        System.out.println("   z       = " + z);
 
         z = z.times(10.0);
-        StdOut.println(" 10z       = " + z);
+        System.out.println(" 10z       = " + z);
 
-        StdOut.println("  |x|      = " + x.magnitude());
-        StdOut.println(" <x, y>    = " + x.dot(y));
-        StdOut.println("dist(x, y) = " + x.distanceTo(y));
-        StdOut.println("dir(x)     = " + x.direction());
+        System.out.println("  |x|      = " + x.magnitude());
+        System.out.println(" <x, y>    = " + x.dot(y));
+        System.out.println("dist(x, y) = " + x.distanceTo(y));
+        System.out.println("dir(x)     = " + x.direction());
 
     }
 }

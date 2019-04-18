@@ -81,7 +81,7 @@ public class Arbitrage {
             }
         }
         else {
-            StdOut.println("No arbitrage opportunity");
+            System.out.println("No arbitrage opportunity");
         }
     }
 

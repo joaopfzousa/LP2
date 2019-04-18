@@ -705,10 +705,10 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
      * @return {@code true} if the AVL tree invariants are fine
      */
     private boolean check() {
-        if (!isBST()) StdOut.println("Symmetric order not consistent");
-        if (!isAVL()) StdOut.println("AVL property not consistent");
-        if (!isSizeConsistent()) StdOut.println("Subtree counts not consistent");
-        if (!isRankConsistent()) StdOut.println("Ranks not consistent");
+        if (!isBST()) System.out.println("Symmetric order not consistent");
+        if (!isAVL()) System.out.println("AVL property not consistent");
+        if (!isSizeConsistent()) System.out.println("Subtree counts not consistent");
+        if (!isRankConsistent()) System.out.println("Ranks not consistent");
         return isBST() && isAVL() && isSizeConsistent() && isRankConsistent();
     }
 
@@ -805,8 +805,8 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
             st.put(key, i);
         }
         for (String s : st.keys())
-            StdOut.println(s + " " + st.get(s));
-        StdOut.println();
+            System.out.println(s + " " + st.get(s));
+        System.out.println();
     }
 }
 

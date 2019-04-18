@@ -199,7 +199,7 @@ public class BreadthFirstDirectedPaths {
     public static void main(String[] args) {
         In in = new In(args[0]);
         Digraph G = new Digraph(in);
-        // StdOut.println(G);
+        // System.out.println(G);
 
         int s = Integer.parseInt(args[1]);
         BreadthFirstDirectedPaths bfs = new BreadthFirstDirectedPaths(G, s);
@@ -211,7 +211,7 @@ public class BreadthFirstDirectedPaths {
                     if (x == s) StdOut.print(x);
                     else        StdOut.print("->" + x);
                 }
-                StdOut.println();
+                System.out.println();
             }
 
             else {

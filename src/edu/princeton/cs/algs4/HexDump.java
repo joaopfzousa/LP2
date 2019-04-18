@@ -74,8 +74,8 @@ public class HexDump {
             char c = BinaryStdIn.readChar();
             StdOut.printf("%02x", c & 0xff);
         }
-        if (bytesPerLine != 0) StdOut.println();
-        StdOut.println((i*8) + " bits");
+        if (bytesPerLine != 0) System.out.println();
+        System.out.println((i*8) + " bits");
     }
 }
 
