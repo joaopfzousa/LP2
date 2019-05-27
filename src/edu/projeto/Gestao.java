@@ -313,10 +313,11 @@ public class Gestao {
             String dataInicio = split[0];
             String dataFinal = split[1];
             Integer idEmpresa = Integer.parseInt(split[2]);
-            Integer idLocalizacao = Integer.parseInt(split[3]);
             Integer idArea = Integer.parseInt(split[4]);
+            Double latitude = Double.parseDouble(split[5]);
+            Double longitude = Double.parseDouble(split[6]);
 
-            Encontro en =  new Encontro(new Date(dataInicio), new Date(dataFinal), idEmpresa, idLocalizacao, idArea);
+            Encontro en =  new Encontro(new Date(dataInicio), new Date(dataFinal), idEmpresa, idArea, latitude, longitude);
             encontrosST.put(en.getDataInicio(), en);
 
         }

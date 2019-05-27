@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 
-public class Empresa {
+public class Empresa implements Utilizadores {
 
     private Integer idEmpresa;
 
@@ -117,6 +117,14 @@ public class Empresa {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public Seguidores getSeguidores() {
+        return seguidores;
+    }
+
+    public void setSeguidores(Seguidores seguidores) {
+        this.seguidores = seguidores;
     }
 
     /**

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Pessoa {
+public class Pessoa implements Utilizadores{
 
     private Integer idPessoa;
 
@@ -166,6 +166,14 @@ public class Pessoa {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public Seguidores getSeguidores() {
+        return seguidores;
+    }
+
+    public void setSeguidores(Seguidores seguidores) {
+        this.seguidores = seguidores;
     }
 
     @Override
