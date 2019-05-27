@@ -14,21 +14,26 @@ public class Empresa {
 
     private String nomeEmpresa;
 
-    private String areaEmpresa;
+    private Integer idAreaEmpresa;
 
     private RedBlackBST<Integer,Pessoa> pessoasST = new RedBlackBST<>();
 
     private RedBlackBST<Integer,Encontro> encontrosST = new RedBlackBST<>();
 
-    private Integer idLocalizacao;
+    private Double latitude;
+
+    private Double longitude;
+
+    private Seguidores seguidores;
 
     @Override
     public String toString() {
         return "Empresa{" +
                 "idEmpresa=" + idEmpresa +
                 ", nomeEmpresa='" + nomeEmpresa + '\'' +
-                ", areaEmpresa='" + areaEmpresa + '\'' +
-                ", idLocalizacao=" + idLocalizacao +
+                ", areaEmpresa='" + idAreaEmpresa + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
                 '}';
     }
 
@@ -36,11 +41,12 @@ public class Empresa {
      *
      * Construtor
      */
-    public Empresa(Integer idEmpresa, String nomeEmpresa, String areaEmpresa, Integer idLocalizacao) {
+    public Empresa(Integer idEmpresa, String nomeEmpresa, Integer idAreaEmpresa, Double latitude, Double longitude) {
         this.idEmpresa = idEmpresa;
         this.nomeEmpresa = nomeEmpresa;
-        this.areaEmpresa = areaEmpresa;
-        this.idLocalizacao = idLocalizacao;
+        this.idAreaEmpresa = idAreaEmpresa;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
 
@@ -56,12 +62,12 @@ public class Empresa {
         this.nomeEmpresa = nomeEmpresa;
     }
 
-    public String getAreaEmpresa() {
-        return areaEmpresa;
+    public Integer getIdAreaEmpresa() {
+        return idAreaEmpresa;
     }
 
-    public void setAreaEmpresa(String areaEmpresa) {
-        this.areaEmpresa = areaEmpresa;
+    public void setIdAreaEmpresa(Integer idAreaEmpresa) {
+        this.idAreaEmpresa = idAreaEmpresa;
     }
 
     public Integer getIdEmpresa() {
@@ -71,6 +77,7 @@ public class Empresa {
     public void setIdEmpresa(Integer idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
+
 
     /**
      *
@@ -96,23 +103,29 @@ public class Empresa {
         this.encontrosST = encontrosST;
     }
 
-    public Integer getIdLocalizacao() {
-        return idLocalizacao;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setIdLocalizacao(Integer idLocalizacao) {
-        this.idLocalizacao = idLocalizacao;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
+    public double getLongitude() {
+        return longitude;
+    }
 
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
 
     /**
      *
      * Funções
      */
-    public static void addPessoa(RedBlackBST<Integer,Pessoa> pessoasST, Integer idPessoa, String nomePessoa, String apelidoPessoa, Integer cc, Date dataNasc, Integer idEmpresa, Integer idLocalizacao) {
+    public static void addPessoa(RedBlackBST<Integer,Pessoa> pessoasST, Integer idPessoa, String nomePessoa, String apelidoPessoa, Integer cc, Date dataNasc, Integer idEmpresa, double latitude, double longitude) {
 
-        Pessoa aux_pessoa = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, cc, dataNasc, idEmpresa, idLocalizacao);
+        Pessoa aux_pessoa = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, cc, dataNasc, idEmpresa, latitude, longitude);
         pessoasST.put(idPessoa, aux_pessoa);
 
         if(pessoasST.contains(idPessoa)){
@@ -244,9 +257,6 @@ public class Empresa {
                 en.setIdEmpresa(Integer.parseInt(update));
                 return " campo editado";
             case"4":
-                en.setIdLocalizacao(Integer.parseInt(update));
-                return " campo editado";
-            case"5":
                 en.setIdArea(Integer.parseInt(update));
                 return " campo editado";
         }
@@ -264,9 +274,34 @@ public class Empresa {
       return res;
   }
     public String toStringFicheiroEmpresa(){
-        return idEmpresa + ";" + nomeEmpresa + ";" + areaEmpresa + ";" + idLocalizacao + ";";
+        return idEmpresa + ";" + nomeEmpresa + ";" + idAreaEmpresa + ";";
     }
 
+    public static ArrayList<String> pesquisarEmpresaByArea(SeparateChainingHashST <Integer,Empresa> empresasST, Integer idArea) {
+
+        ArrayList<String> res = new ArrayList<>();
+        for (Integer idAux : empresasST.keys()) {
+            Empresa emp  = empresasST.get(idAux);
+            if (emp.getIdAreaEmpresa().equals(idArea)) {
+                //StdOut.println(a.toString());
+                res.add(emp.toString());
+            }
+        }
+        return res;
+    }
+
+    public static ArrayList<String> pesquisarEmpresaByPessoa(SeparateChainingHashST <Integer,Empresa> empresasST, Integer idPessoa) {
+
+        ArrayList<String> res = new ArrayList<>();
+        for (Integer idAux : empresasST.keys()) {
+            Empresa emp  = empresasST.get(idAux);
+            if (emp.getPessoasST().equals(idPessoa)) {
+                //StdOut.println(a.toString());
+                res.add(emp.toString());
+            }
+        }
+        return res;
+    }
 
 
 

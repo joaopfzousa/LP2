@@ -29,21 +29,27 @@ public class Pessoa {
 
   private RedBlackBST<Integer,Historico> empregosST = new RedBlackBST<>();
 
-  private Integer idLocalizacao;
+  private double latitude;
+
+  private double longitude;
+
+  private Seguidores seguidores;
 
 
     /**
      *s
      * Construtor
      */
-  public Pessoa(Integer idPessoa, String nomePessoa, String apelidoPessoa, Integer cc, Date dataNasc, Integer idEmpresa, Integer idLocalizacao) {
+  public Pessoa(Integer idPessoa, String nomePessoa, String apelidoPessoa, Integer cc, Date dataNasc, Integer idEmpresa, double latitude, double longitude) {
       this.idPessoa = idPessoa;
       this.nomePessoa = nomePessoa;
       this.apelidoPessoa = apelidoPessoa;
       this.cc = cc;
       this.dataNasc = dataNasc;
       this.idEmpresa = idEmpresa;
-      this.idLocalizacao = idLocalizacao;
+      this.latitude = latitude;
+      this.longitude = longitude;
+
   }
 
     /**
@@ -146,12 +152,20 @@ public class Pessoa {
         this.empregosST = empregosST;
     }
 
-    public Integer getIdLocalizacao() {
-        return idLocalizacao;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setIdLocalizacao(Integer idLocalizacao) {
-        this.idLocalizacao = idLocalizacao;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     @Override
@@ -163,7 +177,8 @@ public class Pessoa {
                 ", cc='" + cc + '\'' +
                 ", dataNasc=" + dataNasc +
                 ", IdEmpresa=" + idEmpresa +
-                ", idLocalizacao=" + idLocalizacao +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
                 '}';
     }
 
@@ -216,9 +231,6 @@ public class Pessoa {
     }
 
 
-  public void listarCompetencia() {
-  }
-
   public static void addArea(SeparateChainingHashST<Integer,Area> areas, Integer idArea,  String nomeArea) {
       Area aux_area = new Area(idArea, nomeArea);
       areas.put(idArea, aux_area);
@@ -262,26 +274,22 @@ public class Pessoa {
     }
 
 
-    /**
-     *
-     * Falta acabar
-     */
-  public static ArrayList<String> pesquisarPessoaArea(RedBlackBST<Integer,Pessoa> pessoasST, int idPessoa) {
-      ArrayList<String> res = new ArrayList<>();
-      for(Integer aux : pessoasST.keys()){
-          Pessoa p = pessoasST.get(aux);
-          if(p.getIdPessoa().equals(idPessoa)){
-              res.add(p.toString());
-          }
-      }
-      return res;
-  }
-
-
     public String toStringFicheiroPessoa(){
-        return idPessoa + ";" + nomePessoa + ";" + apelidoPessoa + ";" + cc + ":" + dataNasc + ";" + idEmpresa + ";" +  idLocalizacao + ";";
+        return idPessoa + ";" + nomePessoa + ";" + apelidoPessoa + ";" + cc + ":" + dataNasc + ";" + idEmpresa + ";" + latitude + ";" + longitude + ";" ;
     }
 
+    public static ArrayList<String> pesquisarPessoasByEmpresa(RedBlackBST<Integer,Pessoa> pessoasST, Integer idEmpresa) {
 
+        ArrayList<String> res = new ArrayList<>();
+        for (Integer idaux : pessoasST.keys()) {
+            Pessoa p = pessoasST.get(idaux);
+            if (p.getIdEmpresa().equals(idEmpresa))
+            {
+                //System.out.println(p.toString());
+                res.add(p.toString());
+            }
+        }
+        return res;
+    }
 
 }

@@ -20,6 +20,8 @@ public class Main {
 
     public static RedBlackBST<Date,Historico> historicoST = new RedBlackBST<>();
 
+    public static SeparateChainingHashST<Integer,Localizacao> localizacaoST = new SeparateChainingHashST<>();
+
 
 
 
@@ -31,6 +33,7 @@ public class Main {
         Gestao.carregarAreas(areasST, ".//data//areas.txt");
         Gestao.carregarCompetencias(competenciasST, ".//data//competencias.txt");
         Gestao.carregaHistorico(historicoST, ".//data//historico.txt");
+        Gestao.carregarLocalizacao(localizacaoST, ".//data//localizacao.txt");
 
         Scanner sca = new Scanner(System.in);
         Main n = new Main();
@@ -40,6 +43,7 @@ public class Main {
             System.out.println(" [1] -> Empresas\n");
             System.out.println(" [2] -> Pessoas\n");
             System.out.println(" [3] -> Encontros\n");
+            System.out.println(" [4] -> Areas\n");
             System.out.println(" [S] -> SAIR\n");
             System.out.println("OP: ");
             op = sca.nextLine();
@@ -52,6 +56,9 @@ public class Main {
                     break;
                 case "3":
                     n.menuEncontro();
+                    break;
+                case"4":
+                    n.menuArea();
                     break;
                 case "s":
                 case "S":
@@ -76,7 +83,8 @@ public class Main {
             System.out.println(" [2] -> Editar empresa\n");
             System.out.println(" [3] -> Remover empresa\n");
             System.out.println(" [4] -> Listar empresas\n");
-            System.out.println(" [5] -> Salvar empresas\n");
+            System.out.println(" [5] -> Pesquisa empresas\n");
+            System.out.println(" [6] -> Salvar empresas\n");
             System.out.println(" [V] -> Voltar\n");
             System.out.println("OP: ");
             op = s.nextLine();
@@ -98,13 +106,32 @@ public class Main {
                     System.out.println("\t\t -----> Inserir empresa <-----\n");
                     System.out.println("Nome Empresa: ");
                     String nome_empresa = empScan.nextLine();
-                    System.out.println("Area Empresa: ");
-                    String area_empresa = empScan.nextLine();
+                    System.out.println("idAreaEmpresa: ");
+                    Integer idarea_empresa = Integer.parseInt(empScan.nextLine());
+
+                    while (Gestao.idAreaValida(areasST, idarea_empresa) == false) {
+                        System.out.println("\nA localizacao nao existe");
+                        System.out.println("IdLoxalizacao:");
+                        idarea_empresa = Integer.parseInt(empScan.nextLine());
+                    }
+
                     System.out.println("IdLocalizacao: ");
                     String idLocal = empScan.nextLine();
                     Integer id_local = Integer.parseInt(idLocal);
 
-                    Gestao.addEmpresa(empresasST, idAux, nome_empresa,area_empresa, id_local);
+                    while (Gestao.idLocalizacaoValida(localizacaoST, id_local) == false) {
+                        System.out.println("\nA localizacao nao existe");
+                        System.out.println("IdLoxalizacao:");
+                        id_local = Integer.parseInt(empScan.nextLine());
+                    }
+
+                    System.out.println("Latitude: ");
+                    Double latitude = Double.parseDouble(empScan.nextLine());
+                    System.out.println("Longitude: ");
+                    Double longitude = Double.parseDouble(empScan.nextLine());
+
+                    Gestao.addEmpresa(empresasST, idAux, nome_empresa,idarea_empresa, latitude, longitude);
+
                     break;
 
                 case "2":
@@ -114,9 +141,11 @@ public class Main {
                     System.out.println("Editar Empresa (idEmpresa): ");
                     String idEmpresa = sa.nextLine();
                     Integer id_Empresa = Integer.parseInt(idEmpresa);
+
                     while (Gestao.idEmpresaValida(empresasST, id_Empresa) == false) {
                         System.out.println("\nId da empresa NAO ESXITE");
                         System.out.println("Editar empresa (idEmpresa): ");
+                        id_Empresa = Integer.parseInt(sa.nextLine());
                     }
                     Gestao.alterarEmpresa(empresasST,id_Empresa);
                     break;
@@ -124,10 +153,11 @@ public class Main {
                 case "3":
                     Scanner sca = new Scanner(System.in);
 
-                    System.out.println("\t\t -----> ELIMINAR AEROPORTO <-----\n");
-                    System.out.println("Eliminica Empresa (idEmpresa): ");
+                    System.out.println("\t\t -----> ELIMINAR EMPRESA <-----\n");
+                    System.out.println("Elimina Empresa (idEmpresa): ");
                     String idEmpres = sca.nextLine();
                     Integer id_Empres = Integer.parseInt(idEmpres);
+
                     while (Gestao.idEmpresaValida(empresasST, id_Empres) == false) {
                         System.out.println("\nId da empresa NAO ESXITE");
                         System.out.println("Editar empresa (idEmpresa): ");
@@ -146,7 +176,31 @@ public class Main {
                     System.out.println("\t\t -----> Listar Empresas <-----\n");
                     Gestao.listarEmpresa(empresasST);
                     break;
-                case "5":
+                case"5":
+                      do{
+                          System.out.println("\t\t -----> Pesquisar Empresas <-----\n");
+                          System.out.println(" [1] -> Por Area\n");
+                          System.out.println(" [V] -> Voltar\n");
+                          System.out.println("OP: ");
+                          op = s.nextLine();
+                          switch (op){
+                              case "1":
+                                  Gestao.listarArea(areasST);
+                                  Scanner p = new Scanner(System.in);
+                                  System.out.println("\nidArea: ");
+                                  Integer idAreaAux = Integer.parseInt(p.nextLine());
+
+                                  while (Gestao.idAreaValida(areasST, idAreaAux) == false) {
+                                      System.out.println("\nIdArea nao existe");
+                                      System.out.println("\nIdArea: ");
+                                      idAreaAux = Integer.parseInt(p.nextLine());
+                                  }
+                                  Gestao.printArraList(Empresa.pesquisarEmpresaByArea(empresasST, idAreaAux));
+                                  break;
+                          }
+                      }while (!"v".equals(op) && !"V".equals(op));
+                      break;
+                case "6":
                     System.out.println("MENSAGEM: " + Gestao.guardarEmpresa(empresasST, ".//data//empresas.txt"));
                     break;
                 case "v":
@@ -169,7 +223,8 @@ public class Main {
             System.out.println(" [2] -> Editar Pessoa\n");
             System.out.println(" [3] -> Remover Pessoa\n");
             System.out.println(" [4] -> Listar Pessoa\n");
-            System.out.println(" [5] -> Salvar Pessoas\n");
+            System.out.println(" [5] -> Pesquisa Pessoa\n");
+            System.out.println(" [6] -> Salvar Pessoas\n");
             System.out.println(" [V] -> Voltar\n");
             System.out.println("OP: ");
             op = s.nextLine();
@@ -191,11 +246,13 @@ public class Main {
                     System.out.println("IdEmpresa: ");
                     String idEM = pScan.nextLine();
                     Integer id_em = Integer.parseInt(idEM);
-                    System.out.println("IdLocalizacao: ");
-                    String idLocal = pScan.nextLine();
-                    Integer id_local = Integer.parseInt(idLocal);
+                    System.out.println("Latitude: ");
+                    Double latitude = Double.parseDouble(pScan.nextLine());
+                    System.out.println("Longitude: ");
+                    Double longitude = Double.parseDouble(pScan.nextLine());
 
-                    Empresa.addPessoa(pessoasST, id_pessoa, nome_pessoa, apelido_pessoa, cc, date, id_em, id_local);
+
+                    Empresa.addPessoa(pessoasST, id_pessoa, nome_pessoa, apelido_pessoa, cc, date, id_em, latitude, longitude);
                     break;
 
                 case "2":
@@ -224,13 +281,46 @@ public class Main {
                         System.out.println("\nNovo ID pessoa: ");
                         id = Integer.parseInt(sc.nextLine());
                     }
+
+                    System.out.println("\nGuardar Historio da Pessoa(Y/N): ");
+                    String v = sc.nextLine();
+                    if (v.contains("y") || v.contains("Y")) {
+                        String path = ".//data//historico//pessoa//" + id + ".txt";
+                        System.out.println("MENSAGEM: " + Gestao.arquivarHistoricoPessoa(pessoasST, id, path));
+                    }
+
                     System.out.println("MENSAGEM: " + Empresa.removePessoa(pessoasST, encontrosST, competenciasST, areasST, historicoST, id));
                     break;
                 case "4":
-                    System.out.println("\t\t -----> LISTAR AVIAO <-----\n");
+                    System.out.println("\t\t -----> LISTAR PESSOA <-----\n");
                     Gestao.listarPessoa(pessoasST);
                     break;
-                case "5":
+                case"5":
+                    do{
+                        System.out.println("\t\t -----> Pesquisar Pessoa <-----\n");
+                        System.out.println(" [1] -> Por Empresa\n");
+                        System.out.println(" [V] -> Voltar\n");
+                        System.out.println("OP: ");
+                        op = s.nextLine();
+                        switch (op){
+                            case "1":
+                                Gestao.listarEmpresa(empresasST);
+                                Scanner pe = new Scanner(System.in);
+                                System.out.println("\nIdEmpresa: ");
+                                Integer idAEmpresaAux = Integer.parseInt(pe.nextLine());
+
+                                while (Gestao.idEmpresaValida(empresasST, idAEmpresaAux) == false) {
+                                    System.out.println("\nEmpresa não existe");
+                                    System.out.println("\nIdEmpresa: ");
+                                    idAEmpresaAux = Integer.parseInt(pe.nextLine());
+                                }
+
+                                Gestao.printArraList(Pessoa.pesquisarPessoasByEmpresa(pessoasST, idAEmpresaAux));
+                                break;
+                        }
+                    }while (!"v".equals(op) && !"V".equals(op));
+                    break;
+                case "6":
                     System.out.println("MENSAGEM: " + Gestao.guardarPessoa(pessoasST, ".//data//pessoas.txt"));
                     break;
                 case "v":
@@ -243,6 +333,86 @@ public class Main {
 
     }
 
+    public void menuArea() {
+        Scanner s = new Scanner(System.in);
+        String op;
+        do {
+
+            System.out.println("\t\t -----> Area <-----\n");
+            System.out.println(" [1] -> Inserir Area\n");
+            System.out.println(" [2] -> Editar Area\n");
+            System.out.println(" [3] -> Remover Area\n");
+            System.out.println(" [4] -> Listar Areas\n");
+            System.out.println(" [5] -> Salvar Area\n");
+            System.out.println(" [V] -> Voltar\n");
+            System.out.println("OP: ");
+            op = s.nextLine();
+            switch (op) {
+
+                case "1":
+                    Scanner aScan = new Scanner(System.in);
+                    int id_area = areasST.get(areasST.size() - 1).getIdArea() + 1;
+                    System.out.println("\t\t -----> Nova Area  <-----");
+                    System.out.println("Nome Area: ");
+                    String nome_area = aScan.nextLine();
+
+                    Pessoa.addArea(areasST, id_area, nome_area);
+                    break;
+
+                case "2":
+                    Scanner asca = new Scanner(System.in);
+                    Gestao.listarArea(areasST);
+                    System.out.println("Editar Area (ID areas): ");
+                    int idAux = Integer.parseInt(asca.nextLine());
+
+
+                    while (Gestao.idAreaValida(areasST,idAux) == false) {
+                        System.out.println("\nID Da Area NAO ESXITE");
+                        System.out.println("\nNovo ID Area: ");
+                        idAux = Integer.parseInt(asca.nextLine());
+                    }
+
+                    Pessoa.alterarArea(areasST,idAux);
+                    break;
+                case "3":
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("\t\t -----> ELIMINAR Area <-----\n");
+                    Gestao.listarArea(areasST);
+                    System.out.printf("Eliminar Area(ID): ");
+                    int id = sc.nextInt();
+
+                    while (Gestao.idAreaValida(areasST,id) == false) {
+                        System.out.println("\nID Da Area NAO ESXITE");
+                        System.out.println("\nNovo ID Area: ");
+                        id = Integer.parseInt(sc.nextLine());
+                    }
+
+                    System.out.println("\nGuardar Historio da Area(Y/N): ");
+                    String v = sc.nextLine();
+                    if (v.contains("y") || v.contains("Y")) {
+                        String path = ".//data//historico//Area//" + id + ".txt";
+                        System.out.println("MENSAGEM: " + Gestao.arquivarHistoricoArea(areasST, id, path));
+                    }
+
+                    Pessoa.removeArea(areasST,id);
+
+                case "4":
+                    System.out.println("\t\t -----> LISTAR AREAS <-----\n");
+                    Gestao.listarArea(areasST);
+                    break;
+                case "5":
+                    System.out.println("MENSAGEM: " + Gestao.guardarArea(areasST, ".//data//encontros.txt"));
+                    break;
+                case "v":
+                case "V":
+                    break;
+                default:
+                    System.out.println("Opcao Errada!!!\n");
+            }
+        } while (!"v".equals(op) && !"V".equals(op));
+    }
+
+
     public void menuEncontro() {
         Scanner s = new Scanner(System.in);
         String op;
@@ -253,35 +423,63 @@ public class Main {
             System.out.println(" [2] -> Editar Encontro\n");
             System.out.println(" [3] -> Remover Encontro\n");
             System.out.println(" [4] -> Listar Encontro\n");
-            System.out.println(" [5] -> Salvar Encontro\n");
+            System.out.println(" [5] -> Pesquisa Encontro\n");
+            System.out.println(" [6] -> Salvar Encontro\n");
             System.out.println(" [V] -> Voltar\n");
             System.out.println("OP: ");
             op = s.nextLine();
             switch (op) {
 
                 case "1":
-                    Scanner vooScan = new Scanner(System.in);
+                    Scanner enScan = new Scanner(System.in);
                     System.out.println("\t\t -----> Novo Encontro <-----");
                     System.out.println("Data Inicio (dd/mm/yyyy hh:mm): ");
-                    Date dataInicio = new Date(vooScan.nextLine());
+                    Date dataInicio = new Date(enScan.nextLine());
                     System.out.println("Data Fim (dd/mm/yyyy hh:mm): ");
-                    Date dataFim = new Date(vooScan.nextLine());
+                    Date dataFim = new Date(enScan.nextLine());
                     while (dataFim.compareTo(dataInicio)<= 0) {
                         System.out.println("\nDATA DE FIM INCORRECTA");
                         System.out.println("Nova Data Fim (dd/mm/yyyy hh:mm): ");
-                        dataFim = new Date(vooScan.nextLine());
+                        dataFim = new Date(enScan.nextLine());
+                    }
+                    Gestao.listarEmpresa(empresasST);
+                    System.out.println("\nId Empresa: ");
+                    int idEmpresa = Integer.parseInt(enScan.nextLine());
+                    System.out.println("\n");
+
+                    while (Gestao.idEmpresaValida(empresasST, idEmpresa) == false) {
+                        System.out.println("\nId da empresa NAO ESXITE");
+                        System.out.println("idEmpresa: ");
+                        idEmpresa = Integer.parseInt(enScan.nextLine());
                     }
 
-                    System.out.println("Id Empresa: ");
-                    int idEmpresa = Integer.parseInt(vooScan.nextLine());
+                    System.out.println("\nId Localização: ");
+                    int idLocal = Integer.parseInt(enScan.nextLine());
+                    System.out.println("\n");
 
-                    System.out.println("Id Localização: ");
-                    int idLocal = Integer.parseInt(vooScan.nextLine());
+                    while (Gestao.idLocalizacaoValida(localizacaoST, idLocal) == false) {
+                        System.out.println("\nA localizacao nao existe");
+                        System.out.println("IdLocalizacao:");
+                        idLocal = Integer.parseInt(enScan.nextLine());
+                    }
 
-                    System.out.println("Id Area: ");
-                    int idArea = Integer.parseInt(vooScan.nextLine());
+                    Gestao.listarArea(areasST);
+                    System.out.println("\nIdArea: ");
+                    int idArea = Integer.parseInt(enScan.nextLine());
 
-                    Encontro en = new Encontro(dataInicio, dataFim, idEmpresa, idLocal, idArea);
+                    while (Gestao.idAreaValida(areasST, idArea) == false) {
+                        System.out.println("\nArea nao existe");
+                        System.out.println("IdArea:");
+                        idArea = Integer.parseInt(enScan.nextLine());
+                    }
+
+                    System.out.println("Latitude: ");
+                    Double latitude = Double.parseDouble(enScan.nextLine());
+                    System.out.println("Longitude: ");
+                    Double longitude = Double.parseDouble(enScan.nextLine());
+
+
+                    Encontro en = new Encontro(dataInicio, dataFim, idEmpresa, idArea, latitude, longitude);
                     Empresa.addEncontro(encontrosST,en);
 
                     System.out.println("MENSAGEM: " + Empresa.addEncontro(encontrosST,en));
@@ -353,14 +551,52 @@ public class Main {
 
                 case "3":
                     Scanner sc = new Scanner(System.in);
-                    System.out.printf("Eliminar VOO(DATA INICIO): ");
+                    Gestao.listarEncontro(encontrosST);
+                    System.out.printf("Eliminar Encontro(DATA INICIO): ");
                     Date dataI = new Date(sc.nextLine());
                     System.out.println("MENSAGEM: " + Empresa.removeEncontro(encontrosST, dataI));
                     break;
 
                 case "4":
-                    System.out.println("\t\t -----> LISTAR VOOS <-----\n");
+                    System.out.println("\t\t -----> LISTAR Encontros <-----\n");
                     Gestao.listarEncontro(encontrosST);
+                    break;
+                case"5":
+                    do{
+                        System.out.println("\t\t -----> Pesquisar Encontros <-----\n");
+                        System.out.println(" [1] -> Por Empresa\n");
+                        System.out.println(" [2] -> Por Area\n");
+                        System.out.println(" [V] -> Voltar\n");
+                        System.out.println("OP: ");
+                        op = s.nextLine();
+                        switch (op){
+                            case "1":
+                                Gestao.listarEmpresa(empresasST);
+                                Scanner ee = new Scanner(System.in);
+                                System.out.println("\nIdEmpresa: ");
+                                Integer idempresaAux = Integer.parseInt(ee.nextLine());
+
+                                while (Gestao.idEmpresaValida(empresasST, idempresaAux) == false) {
+                                    System.out.println("\nEmpresa não existe");
+                                    System.out.println("\nIdEmpresa: ");
+                                    idempresaAux = Integer.parseInt(ee.nextLine());
+                                }
+                                Gestao.printArraList(Gestao.pesquisarEncontroByEmpresa(encontrosST, idempresaAux));
+                                break;
+                            case"2":
+                                Gestao.listarArea(areasST);
+                                Scanner ea = new Scanner(System.in);
+                                System.out.println("\nidArea: ");
+                                Integer idAreaAux = Integer.parseInt(ea.nextLine());
+
+                                while (Gestao.idAreaValida(areasST, idAreaAux) == false) {
+                                    System.out.println("\nIdArea nao existe");
+                                    System.out.println("\nIdArea: ");
+                                    idAreaAux = Integer.parseInt(ea.nextLine());
+                                }
+                                Gestao.printArraList(Gestao.pesquisarEncontroByArea(encontrosST, idAreaAux));
+                        }
+                    }while (!"v".equals(op) && !"V".equals(op));
                     break;
                 case "6":
                     System.out.println("MENSAGEM: " + Gestao.guardarEncontro(encontrosST, ".//data//encontros.txt"));
@@ -373,8 +609,4 @@ public class Main {
             }
         } while (!"v".equals(op) && !"V".equals(op));
     }
-
-
-
 }
-

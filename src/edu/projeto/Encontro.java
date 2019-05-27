@@ -13,19 +13,21 @@ public class Encontro {
 
   private Integer idEmpresa;
 
-  private Integer idLocalizacao;
-
   private Integer idArea;
+
+  private Double latitude;
+
+  private Double longitude;
 
     @Override
     public String toString() {
         return "Encontro{" +
                 ", dataInicio=" + dataInicio +
                 ", dataFinal=" + dataFinal +
-                ", pessoasST=" + pessoasST +
                 ", idEmpresa=" + idEmpresa +
-                ", idLocalizacao=" + idLocalizacao +
                 ", idArea=" + idArea +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
                 '}';
     }
 
@@ -33,12 +35,13 @@ public class Encontro {
    *
    * Construtor
    */
-  public Encontro(Date dataInicio, Date dataFinal, Integer idEmpresa,Integer idLocalizacao, Integer idArea) {
+  public Encontro(Date dataInicio, Date dataFinal, Integer idEmpresa, Integer idArea, Double latitude, Double longitude) {
     this.dataInicio = dataInicio;
     this.dataFinal = dataFinal;
     this.idEmpresa = idEmpresa;
-    this.idLocalizacao = idLocalizacao;
     this.idArea = idArea;
+    this.latitude = latitude;
+    this.longitude = longitude;
   }
 
 
@@ -84,13 +87,6 @@ public class Encontro {
     this.idEmpresa = idEmpresa;
   }
 
-  public Integer getIdLocalizacao() {
-    return idLocalizacao;
-  }
-
-  public void setIdLocalizacao(Integer idLocalizacao) {
-    this.idLocalizacao = idLocalizacao;
-  }
 
   public Integer getIdArea() {
     return idArea;
@@ -100,13 +96,28 @@ public class Encontro {
     this.idArea = idArea;
   }
 
+  public Double getLatitude() {
+    return latitude;
+  }
 
-    /**
+  public void setLatitude(Double latitude) {
+    this.latitude = latitude;
+  }
+
+  public Double getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(Double longitude) {
+    this.longitude = longitude;
+  }
+
+  /**
      *
      * Funções
      */
     public String toStringFicheiroEncontro(){
-        return  dataInicio + ";" + dataFinal + ";" + idEmpresa + ";" + idLocalizacao + ";" + idArea + ";";
+        return  dataInicio + ";" + dataFinal + ";" + idEmpresa + ";"  + idArea + ";" + latitude + ";" +  longitude +";";
     }
 
 

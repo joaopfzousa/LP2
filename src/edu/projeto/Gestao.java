@@ -5,6 +5,7 @@ import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -110,9 +111,9 @@ public class Gestao {
      *
      * Funções
      */
-    public static void addEmpresa(SeparateChainingHashST <Integer,Empresa>empresasST, Integer idEmpresa,  String nomeEmpresa, String areaEmpresa, Integer idLocalizacao) {
+    public static void addEmpresa(SeparateChainingHashST <Integer,Empresa>empresasST, Integer idEmpresa,  String nomeEmpresa, Integer idAreaEmpresa, double  latitude, double longitude) {
 
-        Empresa aux_empresa = new Empresa(idEmpresa, nomeEmpresa, areaEmpresa, idLocalizacao);
+        Empresa aux_empresa = new Empresa(idEmpresa, nomeEmpresa, idAreaEmpresa, latitude, longitude);
         empresasST.put(idEmpresa, aux_empresa);
 
         if(empresasST.contains(idEmpresa)){
@@ -148,8 +149,7 @@ public class Gestao {
         //string name || string areaEmpresa || Integer idEmpresa
         if(empresasST.contains(idEmpresa)){
             System.out.println("1 - nome");
-            System.out.println("2 - areaEmpresa");
-            System.out.println("3 - Localizacao");
+            System.out.println("2 - idAreaEmpresa");
 
             Scanner scanIn = new Scanner(System.in);
             String escolha = scanIn.nextLine();
@@ -162,15 +162,10 @@ public class Gestao {
                     break;
 
                 case"2":
-                    String areaEmpresa = scanIn.nextLine();
-                    empresasST.get(idEmpresa).setAreaEmpresa(areaEmpresa);
+                    Integer idAreaEmpresa = Integer.parseInt(scanIn.nextLine());
+                    empresasST.get(idEmpresa).setIdAreaEmpresa(idAreaEmpresa);
                     break;
 
-                case"3":
-                    String Localizacao = scanIn.nextLine();
-                    Integer local = Integer.parseInt(Localizacao);
-                    empresasST.get(idEmpresa).setIdLocalizacao(local);
-                    break;
             }
             System.out.println("\n Empresa alterada com sucesso");
         }else{
@@ -291,10 +286,11 @@ public class Gestao {
             String[] split = in.readLine().split(";");
             Integer idEmpresa = Integer.parseInt(split[0]);
             String nomeEmpresa = split[1];
-            String areaEmpresa = split[2];
-            Integer idLocalizacao = Integer.parseInt(split[3]);
+            Integer idArea = Integer.parseInt(split[2]);
+            Double latitude = Double.parseDouble(split[3]);
+            Double longitude = Double.parseDouble(split[4]);
 
-            Empresa em =  new Empresa(idEmpresa, nomeEmpresa, areaEmpresa, idLocalizacao);
+            Empresa em =  new Empresa(idEmpresa, nomeEmpresa, idArea, latitude, longitude);
             empresasST.put(idEmpresa, em);
 
         }
@@ -400,9 +396,10 @@ public class Gestao {
             Integer cc = Integer.parseInt(split[3]);
             String dataNasc = split[4];
             Integer idEmpresa = Integer.parseInt(split[5]);
-            Integer idLocalizacao = Integer.parseInt(split[6]);
+            Double latitude = Double.parseDouble(split[6]);
+            Double longitude = Double.parseDouble(split[7]);
 
-            Pessoa p = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, cc,  new Date(dataNasc), idEmpresa, idLocalizacao);
+            Pessoa p = new Pessoa(idPessoa, nomePessoa, apelidoPessoa, cc,  new Date(dataNasc), idEmpresa, latitude, longitude);
             pessoasST.put(idPessoa, p);
 
         }
@@ -421,12 +418,24 @@ public class Gestao {
         return "Guardou historico da pessoa" + idPessoa + "com Sucesso";
     }
 
+    public static String arquivarHistoricoArea(SeparateChainingHashST<Integer,Area> areas, Integer idArea, String path){
+
+        Out o = new Out(path);
+        for(Integer id_paux : areas.keys()){
+            Area a = (Area) areas.get(id_paux);
+            if(a.getIdArea().equals(idArea)){
+                o.println(a.toStringFicheiroArea());
+            }
+        }
+        return "Guardou historico da Area" + idArea + "com Sucesso";
+    }
+
 
     public static boolean idEmpresaValida(SeparateChainingHashST <Integer,Empresa> empresasST, Integer idEmpresa) {
 
         for (Integer idAux : empresasST.keys()) {
             Empresa en = empresasST.get(idAux);
-            if (en.getIdLocalizacao().equals(idEmpresa)) {
+            if (en.getIdEmpresa().equals(idEmpresa)) {
                 return true;
             }
         }
@@ -443,5 +452,69 @@ public class Gestao {
         }
         return false;
     }
+
+    public static boolean idLocalizacaoValida(SeparateChainingHashST<Integer,Localizacao> localizacaoST, Integer idLocalizacao) {
+
+        for (Integer idAux : localizacaoST.keys()) {
+            Localizacao loc = localizacaoST.get(idAux);
+            if (loc.getIdLocalizacao().equals(idLocalizacao)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean idAreaValida(SeparateChainingHashST<Integer,Area> areasST, int id) {
+        for (int aux : areasST.keys()) {
+            Area a = areasST.get(aux);
+            if (a.getIdArea() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void printArraList(ArrayList<String> aR) {
+        for (String ar : aR) {
+            System.out.println(ar.toString());
+        }
+    }
+
+    public static boolean dataValida(RedBlackBST<Date,Encontro> encontrosST, Date d) {
+
+        for (Date dAux : encontrosST.keys()) {
+            Encontro en = encontrosST.get(dAux);
+            if (en.getDataInicio().equals(d)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static ArrayList<String> pesquisarEncontroByEmpresa(RedBlackBST<Date,Encontro> encontrosST, int id) {
+
+        ArrayList<String> res = new ArrayList<>();
+        for (Date aux : encontrosST.keys()) {
+            Encontro en = encontrosST.get(aux);
+            if (en.getIdEmpresa() == id) {
+                //StdOut.println(v.toString());
+                res.add(en.toString());
+            }
+        }
+        return res;
+    }
+
+    public static ArrayList<String> pesquisarEncontroByArea(RedBlackBST<Date,Encontro> encontrosST, int id) {
+
+        ArrayList<String> res = new ArrayList<>();
+        for (Date aux : encontrosST.keys()) {
+            Encontro en = encontrosST.get(aux);
+            if (en.getIdArea() == id) {
+                //StdOut.println(v.toString());
+                res.add(en.toString());
+            }
+        }
+        return res;
+    }
+
 
 }
