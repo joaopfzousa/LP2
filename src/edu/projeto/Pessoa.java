@@ -1,5 +1,8 @@
 package edu.projeto;
 
+
+import edu.projeto.PontoAcesso;
+
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
@@ -299,5 +302,4 @@ public class Pessoa implements Utilizadores{
         }
         return res;
     }
-
 }

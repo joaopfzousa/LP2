@@ -8,21 +8,19 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static RedBlackBST<Date,Encontro> encontrosST = new RedBlackBST<>();
+    public static RedBlackBST<Date, Encontro> encontrosST = new RedBlackBST<>();
 
-    public static SeparateChainingHashST<Integer,Empresa> empresasST = new SeparateChainingHashST();
+    public static SeparateChainingHashST<Integer, Empresa> empresasST = new SeparateChainingHashST();
 
-    public static RedBlackBST<Integer,Pessoa> pessoasST = new RedBlackBST<>();
+    public static RedBlackBST<Integer, Pessoa> pessoasST = new RedBlackBST<>();
 
-    public static SeparateChainingHashST<Integer,Area> areasST = new SeparateChainingHashST();
+    public static SeparateChainingHashST<Integer, Area> areasST = new SeparateChainingHashST();
 
-    public static SeparateChainingHashST<Integer,Competencia> competenciasST = new SeparateChainingHashST();
+    public static SeparateChainingHashST<Integer, Competencia> competenciasST = new SeparateChainingHashST();
 
-    public static RedBlackBST<Date,Historico> historicoST = new RedBlackBST<>();
+    public static RedBlackBST<Date, Historico> historicoST = new RedBlackBST<>();
 
-    public static SeparateChainingHashST<Integer,Localizacao> localizacaoST = new SeparateChainingHashST<>();
-
-
+    public static SeparateChainingHashST<Integer, Localizacao> localizacaoST = new SeparateChainingHashST<>();
 
 
     public static void main(String[] args) throws IOException {
@@ -57,7 +55,7 @@ public class Main {
                 case "3":
                     n.menuEncontro();
                     break;
-                case"4":
+                case "4":
                     n.menuArea();
                     break;
                 case "s":
@@ -69,6 +67,7 @@ public class Main {
             }
         } while (!"s".equals(op) && !"S".equals(op));
     }
+
     /**
      * MENU Empresas
      */
@@ -130,7 +129,7 @@ public class Main {
                     System.out.println("Longitude: ");
                     Double longitude = Double.parseDouble(empScan.nextLine());
 
-                    Gestao.addEmpresa(empresasST, idAux, nome_empresa,idarea_empresa, latitude, longitude);
+                    Gestao.addEmpresa(empresasST, idAux, nome_empresa, idarea_empresa, latitude, longitude);
 
                     break;
 
@@ -147,7 +146,7 @@ public class Main {
                         System.out.println("Editar empresa (idEmpresa): ");
                         id_Empresa = Integer.parseInt(sa.nextLine());
                     }
-                    Gestao.alterarEmpresa(empresasST,id_Empresa);
+                    Gestao.alterarEmpresa(empresasST, id_Empresa);
                     break;
 
                 case "3":
@@ -176,30 +175,30 @@ public class Main {
                     System.out.println("\t\t -----> Listar Empresas <-----\n");
                     Gestao.listarEmpresa(empresasST);
                     break;
-                case"5":
-                      do{
-                          System.out.println("\t\t -----> Pesquisar Empresas <-----\n");
-                          System.out.println(" [1] -> Por Area\n");
-                          System.out.println(" [V] -> Voltar\n");
-                          System.out.println("OP: ");
-                          op = s.nextLine();
-                          switch (op){
-                              case "1":
-                                  Gestao.listarArea(areasST);
-                                  Scanner p = new Scanner(System.in);
-                                  System.out.println("\nidArea: ");
-                                  Integer idAreaAux = Integer.parseInt(p.nextLine());
+                case "5":
+                    do {
+                        System.out.println("\t\t -----> Pesquisar Empresas <-----\n");
+                        System.out.println(" [1] -> Por Area\n");
+                        System.out.println(" [V] -> Voltar\n");
+                        System.out.println("OP: ");
+                        op = s.nextLine();
+                        switch (op) {
+                            case "1":
+                                Gestao.listarArea(areasST);
+                                Scanner p = new Scanner(System.in);
+                                System.out.println("\nidArea: ");
+                                Integer idAreaAux = Integer.parseInt(p.nextLine());
 
-                                  while (Gestao.idAreaValida(areasST, idAreaAux) == false) {
-                                      System.out.println("\nIdArea nao existe");
-                                      System.out.println("\nIdArea: ");
-                                      idAreaAux = Integer.parseInt(p.nextLine());
-                                  }
-                                  Gestao.printArraList(Empresa.pesquisarEmpresaByArea(empresasST, idAreaAux));
-                                  break;
-                          }
-                      }while (!"v".equals(op) && !"V".equals(op));
-                      break;
+                                while (Gestao.idAreaValida(areasST, idAreaAux) == false) {
+                                    System.out.println("\nIdArea nao existe");
+                                    System.out.println("\nIdArea: ");
+                                    idAreaAux = Integer.parseInt(p.nextLine());
+                                }
+                                Gestao.printArraList(Empresa.pesquisarEmpresaByArea(empresasST, idAreaAux));
+                                break;
+                        }
+                    } while (!"v".equals(op) && !"V".equals(op));
+                    break;
                 case "6":
                     System.out.println("MENSAGEM: " + Gestao.guardarEmpresa(empresasST, ".//data//empresas.txt"));
                     break;
@@ -295,14 +294,14 @@ public class Main {
                     System.out.println("\t\t -----> LISTAR PESSOA <-----\n");
                     Gestao.listarPessoa(pessoasST);
                     break;
-                case"5":
-                    do{
+                case "5":
+                    do {
                         System.out.println("\t\t -----> Pesquisar Pessoa <-----\n");
                         System.out.println(" [1] -> Por Empresa\n");
                         System.out.println(" [V] -> Voltar\n");
                         System.out.println("OP: ");
                         op = s.nextLine();
-                        switch (op){
+                        switch (op) {
                             case "1":
                                 Gestao.listarEmpresa(empresasST);
                                 Scanner pe = new Scanner(System.in);
@@ -318,7 +317,7 @@ public class Main {
                                 Gestao.printArraList(Pessoa.pesquisarPessoasByEmpresa(pessoasST, idAEmpresaAux));
                                 break;
                         }
-                    }while (!"v".equals(op) && !"V".equals(op));
+                    } while (!"v".equals(op) && !"V".equals(op));
                     break;
                 case "6":
                     System.out.println("MENSAGEM: " + Gestao.guardarPessoa(pessoasST, ".//data//pessoas.txt"));
@@ -366,13 +365,13 @@ public class Main {
                     int idAux = Integer.parseInt(asca.nextLine());
 
 
-                    while (Gestao.idAreaValida(areasST,idAux) == false) {
+                    while (Gestao.idAreaValida(areasST, idAux) == false) {
                         System.out.println("\nID Da Area NAO ESXITE");
                         System.out.println("\nNovo ID Area: ");
                         idAux = Integer.parseInt(asca.nextLine());
                     }
 
-                    Pessoa.alterarArea(areasST,idAux);
+                    Pessoa.alterarArea(areasST, idAux);
                     break;
                 case "3":
                     Scanner sc = new Scanner(System.in);
@@ -381,7 +380,7 @@ public class Main {
                     System.out.printf("Eliminar Area(ID): ");
                     int id = sc.nextInt();
 
-                    while (Gestao.idAreaValida(areasST,id) == false) {
+                    while (Gestao.idAreaValida(areasST, id) == false) {
                         System.out.println("\nID Da Area NAO ESXITE");
                         System.out.println("\nNovo ID Area: ");
                         id = Integer.parseInt(sc.nextLine());
@@ -394,7 +393,7 @@ public class Main {
                         System.out.println("MENSAGEM: " + Gestao.arquivarHistoricoArea(areasST, id, path));
                     }
 
-                    Pessoa.removeArea(areasST,id);
+                    Pessoa.removeArea(areasST, id);
 
                 case "4":
                     System.out.println("\t\t -----> LISTAR AREAS <-----\n");
@@ -437,7 +436,7 @@ public class Main {
                     Date dataInicio = new Date(enScan.nextLine());
                     System.out.println("Data Fim (dd/mm/yyyy hh:mm): ");
                     Date dataFim = new Date(enScan.nextLine());
-                    while (dataFim.compareTo(dataInicio)<= 0) {
+                    while (dataFim.compareTo(dataInicio) <= 0) {
                         System.out.println("\nDATA DE FIM INCORRECTA");
                         System.out.println("Nova Data Fim (dd/mm/yyyy hh:mm): ");
                         dataFim = new Date(enScan.nextLine());
@@ -480,9 +479,9 @@ public class Main {
 
 
                     Encontro en = new Encontro(dataInicio, dataFim, idEmpresa, idArea, latitude, longitude);
-                    Empresa.addEncontro(encontrosST,en);
+                    Empresa.addEncontro(encontrosST, en);
 
-                    System.out.println("MENSAGEM: " + Empresa.addEncontro(encontrosST,en));
+                    System.out.println("MENSAGEM: " + Empresa.addEncontro(encontrosST, en));
                     break;
 
                 case "2":
@@ -561,15 +560,15 @@ public class Main {
                     System.out.println("\t\t -----> LISTAR Encontros <-----\n");
                     Gestao.listarEncontro(encontrosST);
                     break;
-                case"5":
-                    do{
+                case "5":
+                    do {
                         System.out.println("\t\t -----> Pesquisar Encontros <-----\n");
                         System.out.println(" [1] -> Por Empresa\n");
                         System.out.println(" [2] -> Por Area\n");
                         System.out.println(" [V] -> Voltar\n");
                         System.out.println("OP: ");
                         op = s.nextLine();
-                        switch (op){
+                        switch (op) {
                             case "1":
                                 Gestao.listarEmpresa(empresasST);
                                 Scanner ee = new Scanner(System.in);
@@ -583,7 +582,7 @@ public class Main {
                                 }
                                 Gestao.printArraList(Gestao.pesquisarEncontroByEmpresa(encontrosST, idempresaAux));
                                 break;
-                            case"2":
+                            case "2":
                                 Gestao.listarArea(areasST);
                                 Scanner ea = new Scanner(System.in);
                                 System.out.println("\nidArea: ");
@@ -596,7 +595,7 @@ public class Main {
                                 }
                                 Gestao.printArraList(Gestao.pesquisarEncontroByArea(encontrosST, idAreaAux));
                         }
-                    }while (!"v".equals(op) && !"V".equals(op));
+                    } while (!"v".equals(op) && !"V".equals(op));
                     break;
                 case "6":
                     System.out.println("MENSAGEM: " + Gestao.guardarEncontro(encontrosST, ".//data//encontros.txt"));

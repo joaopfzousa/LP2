@@ -1,20 +1,22 @@
 package edu.projeto;
 
-import edu.princeton.cs.algs4.LinearProbingHashST;
-import edu.princeton.cs.algs4.StdOut;
+
+import edu.princeton.cs.algs4.RedBlackBST;
+import edu.princeton.cs.algs4.SeparateChainingHashST;
+
 
 
 public class Seguidores {
 
     private Utilizadores utilizadores;
 
-    private LinearProbingHashST<Integer,Empresa> empresaSeguir = new LinearProbingHashST<>();
+    private SeparateChainingHashST<Integer,Empresa> empresaSeguir = new SeparateChainingHashST<>();
 
-    private LinearProbingHashST<Integer,Empresa> empresaSeguindo = new LinearProbingHashST<>();
+    private SeparateChainingHashST<Integer,Empresa> empresaSeguindo = new SeparateChainingHashST<>();
 
-    private LinearProbingHashST<Integer,Pessoa> pessoaSeguir = new LinearProbingHashST<>();
+    private RedBlackBST<Integer,Pessoa> pessoaSeguir = new RedBlackBST<>();
 
-    private LinearProbingHashST<Integer,Pessoa> pessoaSeguindo = new LinearProbingHashST<>();
+    private RedBlackBST<Integer,Pessoa> pessoaSeguindo = new RedBlackBST<>();
 
 
     //construtor
@@ -23,6 +25,45 @@ public class Seguidores {
         if(empresa != null) this.utilizadores = empresa;
     }
 
+    public Utilizadores getUtilizadores() {
+        return utilizadores;
+    }
+
+    public void setUtilizadores(Utilizadores utilizadores) {
+        this.utilizadores = utilizadores;
+    }
+
+    public SeparateChainingHashST<Integer, Empresa> getEmpresaSeguir() {
+        return empresaSeguir;
+    }
+
+    public void setEmpresaSeguir(SeparateChainingHashST<Integer, Empresa> empresaSeguir) {
+        this.empresaSeguir = empresaSeguir;
+    }
+
+    public SeparateChainingHashST<Integer, Empresa> getEmpresaSeguindo() {
+        return empresaSeguindo;
+    }
+
+    public void setEmpresaSeguindo(SeparateChainingHashST<Integer, Empresa> empresaSeguindo) {
+        this.empresaSeguindo = empresaSeguindo;
+    }
+
+    public RedBlackBST<Integer, Pessoa> getPessoaSeguir() {
+        return pessoaSeguir;
+    }
+
+    public void setPessoaSeguir(RedBlackBST<Integer, Pessoa> pessoaSeguir) {
+        this.pessoaSeguir = pessoaSeguir;
+    }
+
+    public RedBlackBST<Integer, Pessoa> getPessoaSeguindo() {
+        return pessoaSeguindo;
+    }
+
+    public void setPessoaSeguindo(RedBlackBST<Integer, Pessoa> pessoaSeguindo) {
+        this.pessoaSeguindo = pessoaSeguindo;
+    }
 
     //Funções
 
